@@ -1,38 +1,10 @@
-# Operator
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: tidb-operator
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
-spec:
-  project: default
-  source:
-    repoURL: ghcr.io/pingcap/charts
-    chart: tidb-operator
-    targetRevision: v2.0.0
-    helm:
-      releaseName: tidb-operator
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: tidb-admin
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-
----
-# Cluster
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: tidb-cluster
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   source:
@@ -44,7 +16,7 @@ spec:
     namespace: db
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
