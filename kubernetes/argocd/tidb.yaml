@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/pingcap/tidb-operator.git
     targetRevision: v2.0.0
-    path: manifests/crds
+    path: manifests/crd
   destination:
     server: https://kubernetes.default.svc
     namespace: tidb-admin
