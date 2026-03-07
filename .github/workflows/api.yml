@@ -3,7 +3,7 @@ name: API
 on:
   push:
     branches: [main]
-    paths: ['api/**']
+    paths: ['api/**', '.github/workflows/api.yml']
 
 permissions:
   contents: write
@@ -56,7 +56,7 @@ jobs:
 
       - name: Update deployment manifest
         run: |
-          sed -i "s|image: rusxl/agama-api:.*|image: rusxl/agama-api:${{ github.sha }}|g" kubernetes/api/deployment.yaml
+          sed -i "s|image: rusxl/agama-api:.*|image: rusxl/agama-api:${{ github.sha }}|g" kubernetes/api/01-deployment.yaml
 
       - name: Deployment changes
         uses: stefanzweifel/git-auto-commit-action@v5
