@@ -41,7 +41,7 @@ jobs:
       - name: Docker Hub login
         uses: docker/login-action@v3
         with:
-          username: rusXL
+          username: rusxl
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Docker Hub build and push
@@ -50,6 +50,6 @@ jobs:
           context: ./api
           push: true
           tags: |
-            rusXL/agama-api:latest
-            rusXL/agama-api:${{ github.sha }}
+            rusxl/agama-api:latest
+            rusxl/agama-api:${{ github.sha }}
           
