@@ -6,7 +6,7 @@ metadata:
 spec:
   cluster:
     name: basic
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       annotations:
@@ -17,4 +17,4 @@ spec:
       - name: data
         mounts:
         - type: data
-        storage: 1Gi
+        storage: 1Gi # TODO: change to 10Gi
