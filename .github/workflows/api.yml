@@ -56,7 +56,7 @@ jobs:
 
       - name: Update deployment manifest
         run: |
-          sed -i "s|image: rusxl/agama-api:.*|image: rusxl/agama-api:${{ github.sha }}|g" kubernetes/api/01-deployment.yaml
+          sed -i "s|image: rusxl/agama-api:.*|image: rusxl/agama-api:${{ github.sha }}|g" kubernetes/apps/api/01-deployment.yaml
 
       - name: Deployment changes
         uses: stefanzweifel/git-auto-commit-action@v5
