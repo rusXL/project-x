@@ -50,7 +50,7 @@ export default function HomePage() {
       setItems((prev) => [...prev, item]);
       setInput("");
     } catch (e) {
-      setActionError(e instanceof Error ? e.message : "Something went wrong.");
+      setActionError("Something went wrong.");
     } finally {
       setSubmitting(false);
     }
@@ -64,7 +64,7 @@ export default function HomePage() {
       const updated: Item = await res.json();
       setItems((prev) => prev.map((i) => (i.id === updated.id ? updated : i)));
     } catch (e) {
-      setActionError(e instanceof Error ? e.message : "Something went wrong.");
+      setActionError("Something went wrong.");
     }
   };
 
@@ -75,7 +75,7 @@ export default function HomePage() {
       if (!res.ok && res.status !== 204) throw new Error("Could not delete item.");
       setItems((prev) => prev.filter((i) => i.id !== id));
     } catch (e) {
-      setActionError(e instanceof Error ? e.message : "Something went wrong.");
+      setActionError("Something went wrong.");
     }
   };
 
@@ -84,7 +84,7 @@ export default function HomePage() {
   );
 
   return (
-    <main className="min-h-screen bg-background flex items-start justify-center pt-20 px-4">
+    <main className="min-h-screen bg-background flex items-start justify-center py-10 px-4">
       <div className="w-full max-w-sm space-y-6">
 
         {/* Header */}
@@ -93,8 +93,6 @@ export default function HomePage() {
           <h1 className="text-2xl font-semibold tracking-tight">AGAMA</h1>
           <p className="text-sm text-muted-foreground">A Generic App to Manage Anything</p>
         </div>
-
-        <Separator />
 
         {/* Add item */}
         <form
@@ -107,6 +105,7 @@ export default function HomePage() {
             onChange={(e) => setInput(e.target.value)}
             disabled={submitting || !!loadError}
             autoComplete="off"
+            autoFocus
           />
           <Button type="submit" disabled={submitting || !input.trim() || !!loadError}>
             {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : "Add"}
@@ -147,28 +146,30 @@ export default function HomePage() {
             <div
               key={item.id}
               className={cn(
-                "flex items-center justify-between rounded-md px-3 py-2 text-sm group",
+                "group flex cursor-pointer items-center justify-between rounded-md px-3 py-2 text-sm transition-colors",
                 item.state === 1
-                  ? "bg-muted text-muted-foreground"
-                  : "hover:bg-muted/50"
+                  ? "bg-muted text-muted-foreground hover:bg-muted/80"
+                  : "hover:bg-muted/60"
               )}
+              onClick={() => void toggle(item.id)}
             >
-              <button
-                type="button"
+              <span
                 className={cn(
-                  "flex-1 text-left",
+                  "flex-1 text-left break-all",
                   item.state === 1 && "line-through"
                 )}
-                onClick={() => void toggle(item.id)}
               >
                 {item.value}
-              </button>
+              </span>
               <Button
                 type="button"
                 variant="ghost"
                 size="icon"
                 className="h-6 w-6 opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive"
-                onClick={() => void remove(item.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  void remove(item.id);
+                }}
                 aria-label="Delete"
               >
                 <Trash2 className="h-3.5 w-3.5" />
