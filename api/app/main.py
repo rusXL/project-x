@@ -11,11 +11,13 @@ from app.models.item import Item
 from app.routers import items
 
 
+# TODO: init db in kubernetes manifests once that feature is available for tidb v2 operator
 async def _create_database() -> None:
+    db_name = settings.database_url.rsplit("/", 1)[-1]
     root_url = settings.database_url.rsplit("/", 1)[0]
     root_engine = create_async_engine(root_url)
     async with root_engine.begin() as conn:
-        await conn.execute(text(f"CREATE DATABASE IF NOT EXISTS `agama`"))
+        await conn.execute(text(f"CREATE DATABASE IF NOT EXISTS `{db_name}`"))
     await root_engine.dispose()
 
 
@@ -41,7 +43,6 @@ async def _seed_demo_items() -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await _create_database()
     await _create_tables()
     await _seed_demo_items()
     yield
