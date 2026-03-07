@@ -17,7 +17,8 @@ spec:
         - name: api
           image: rusxl/agama-api:fbb0800ed166d8a7b7192f629a070805cfd30f47
           ports:
-            - containerPort: 8000
+            - name: http
+              containerPort: 8000
           env:
             # TODO: Secret/ConfigMap later
             - name: DATABASE_URL
