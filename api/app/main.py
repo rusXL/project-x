@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import select
 from prometheus_fastapi_instrumentator import Instrumentator
 
 from app.config import settings
@@ -10,27 +11,30 @@ from app.models.item import Item
 from app.routers import items
 
 
-def _create_tables() -> None:
-    Base.metadata.create_all(bind=engine)
+async def _create_tables() -> None:
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
 
 
-def _seed_demo_items() -> None:
-    db = SessionLocal()
-    try:
-        if db.query(Item).count() == 0:
-            db.add_all([
-                Item(value="I'm a demo item — click me to change my state", state=1),
-                Item(value="I'm another demo item — click ❌ to remove me →"),
-            ])
-            db.commit()
-    finally:
-        db.close()
+async def _seed_demo_items() -> None:
+    async with SessionLocal() as db:
+        result = await db.execute(select(Item))
+        if not result.scalars().first():
+            db.add_all(
+                [
+                    Item(
+                        value="I'm a demo item — click me to change my state", state=1
+                    ),
+                    Item(value="I'm another demo item — click ❌ to remove me →"),
+                ]
+            )
+            await db.commit()
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    _create_tables()
-    _seed_demo_items()
+    await _create_tables()
+    await _seed_demo_items()
     yield
 
 
