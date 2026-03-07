@@ -1,0 +1,77 @@
+# CRDs
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tidb-crds
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/pingcap/tidb-operator.git
+    targetRevision: v2.0.0
+    path: manifests/crds
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: db
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+
+---
+# Operator
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tidb-operator
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/pingcap/tidb-operator.git
+    targetRevision: v2.0.0
+    path: manifests/operator
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: tidb-admin
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+
+---
+# Cluster
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tidb-cluster
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rusXL/project-x.git
+    targetRevision: HEAD
+    path: kubernetes/apps/tidb
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: db
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      
