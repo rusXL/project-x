@@ -35,9 +35,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/pingcap/tidb-operator.git
+    repoURL: ghcr.io/pingcap/charts
+    chart: tidb-operator
     targetRevision: v2.0.0
-    path: manifests/operator
+    helm:
+      releaseName: tidb-operator
   destination:
     server: https://kubernetes.default.svc
     namespace: tidb-admin
@@ -47,7 +49,6 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true
 
 ---
 # Cluster
