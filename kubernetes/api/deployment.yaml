@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: rusXL/agama-api:latest
+          image: rusxl/agama-api:39f9cc409db161002900ce5e21ae0c4f3327e353
           ports:
             - containerPort: 8000
           env:
