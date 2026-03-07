@@ -2,7 +2,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import select
+from sqlalchemy import select, text
+from sqlalchemy.ext.asyncio import create_async_engine
 from prometheus_fastapi_instrumentator import Instrumentator
 
 from app.config import settings
@@ -43,6 +44,7 @@ async def _seed_demo_items() -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    await _create_database()
     await _create_tables()
     await _seed_demo_items()
     yield
