@@ -14,7 +14,7 @@ spec:
     path: manifests/crds
   destination:
     server: https://kubernetes.default.svc
-    namespace: db
+    namespace: tidb-admin
   syncPolicy:
     automated:
       prune: true
@@ -74,4 +74,3 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
-      
