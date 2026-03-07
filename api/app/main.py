@@ -11,6 +11,14 @@ from app.models.item import Item
 from app.routers import items
 
 
+async def _create_database() -> None:
+    root_url = settings.database_url.rsplit("/", 1)[0]
+    root_engine = create_async_engine(root_url)
+    async with root_engine.begin() as conn:
+        await conn.execute(text(f"CREATE DATABASE IF NOT EXISTS `agama`"))
+    await root_engine.dispose()
+
+
 async def _create_tables() -> None:
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
@@ -33,6 +41,7 @@ async def _seed_demo_items() -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    await _create_database()
     await _create_tables()
     await _seed_demo_items()
     yield

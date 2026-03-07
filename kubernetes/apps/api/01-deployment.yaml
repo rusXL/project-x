@@ -21,7 +21,7 @@ spec:
           env:
             # TODO: Secret/ConfigMap later
             - name: DATABASE_URL
-              value: "mysql+aiomysql://root:@basic-tidb.db.svc.cluster.local:4000/agama"
+              value: "mysql+aiomysql://root:@tidb.db.svc.cluster.local:4000/agama"
             - name: ALLOWED_ORIGINS
               value: '["*"]'
             - name: APP_NAME

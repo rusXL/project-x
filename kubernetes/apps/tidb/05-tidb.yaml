@@ -1,0 +1,16 @@
+apiVersion: core.pingcap.com/v1alpha1
+kind: TiDBGroup
+metadata:
+  name: tidb
+  namespace: db
+spec:
+  cluster:
+    name: basic
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        author: pingcap
+    spec:
+      version: v8.5.2
+      
