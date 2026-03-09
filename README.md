@@ -9,11 +9,9 @@
 
 ## Bootstrap
 ```bash
-chmod +x backend.sh
-chmod +x frontend.sh
-chmod +x open.sh
+chmod +x scripts/*.sh
 
-./backend.sh
-./frontend.sh
-./open.sh
+./scripts/backend.sh
+./scripts/frontend.sh
+./scripts/open.sh
 ```
