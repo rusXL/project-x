@@ -5,10 +5,6 @@ on:
     branches: [main]
     paths: ['api/**', '.github/workflows/api.yml']
 
-permissions:
-  contents: write
-
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -27,20 +23,15 @@ jobs:
           pip install -r requirements.txt
           pip install -r requirements-dev.txt
 
-      - name: Formatting
+      - name: Formatting check
         run: |
           cd api
-          ruff format .
+          ruff format --check .
 
-      - name: Linting
+      - name: Linting check
         run: |
           cd api
-          ruff check . --fix
-
-      - name: Style changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "ci(api): auto-format with ruff"
+          ruff check .
 
       - name: Docker Hub login
         uses: docker/login-action@v3
@@ -54,13 +45,3 @@ jobs:
           context: ./api
           push: true
           tags: rusxl/agama-api:${{ github.sha }}
-
-      - name: Update deployment manifest
-        run: |
-          sed -i "s|image: rusxl/agama-api:.*|image: rusxl/agama-api:${{ github.sha }}|g" kubernetes/apps/api/01-deployment.yaml
-
-      - name: Deployment changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "ci(api): update image tag to ${{ github.sha }}"
-          

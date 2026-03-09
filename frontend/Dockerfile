@@ -106,8 +106,5 @@ COPY --from=builder --chown=node:node /app/.next/static ./.next/static
 # Switch to non-root user for security best practices
 USER node
 
-# Expose port 3000 to allow HTTP traffic
-EXPOSE 3000
-
 # Start Next.js standalone server
 CMD ["node", "server.js"]
