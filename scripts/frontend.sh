@@ -2,4 +2,4 @@
 set -e
 
 # Frontend
-kubectl apply -f kubernetes/apps/frontend
+kubectl apply -f ../kubernetes/apps/frontend

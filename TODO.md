@@ -11,11 +11,9 @@
 - load balancer SSL cert?
 - DNS?
 
-
-- SSR for frontend
-- k8s and argocd for frontend cluster
-- terraform deployments for cloud and on-premise cluster
-
+- terraform, ingress for frontend and backend
+- Rancher fleet cd
+- ssl for load balancer
 
 
 # Install ArgoCD

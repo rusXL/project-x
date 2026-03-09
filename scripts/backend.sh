@@ -7,7 +7,7 @@ kubectl apply -f https://github.com/pingcap/tidb-operator/releases/download/v2.0
 kubectl apply -f https://github.com/pingcap/tidb-operator/releases/download/v2.0.0/tidb-operator.yaml --server-side
 
 # TiDB Cluster
-kubectl apply -f kubernetes/apps/tidb
+kubectl apply -f ../kubernetes/apps/tidb
 
 # API
-kubectl apply -f kubernetes/apps/api
+kubectl apply -f ../kubernetes/apps/api
