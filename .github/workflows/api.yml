@@ -40,7 +40,7 @@ jobs:
       - name: Style changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "style: auto-format with ruff"
+          commit_message: "ci(api): auto-format with ruff"
 
       - name: Docker Hub login
         uses: docker/login-action@v3

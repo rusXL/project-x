@@ -1,0 +1,64 @@
+name: Frontend
+
+on:
+  push:
+    branches: [main]
+    paths: ['frontend/**', '.github/workflows/frontend.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Formatting
+        run: |
+          cd frontend
+          npx prettier --write .
+
+      - name: Linting
+        run: |
+          cd frontend
+          npx eslint . --fix
+
+      - name: Style changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci(frontend): auto-format with prettier"
+
+      - name: Docker Hub login
+        uses: docker/login-action@v3
+        with:
+          username: rusxl
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Docker Hub build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          push: true
+          tags: rusxl/agama-frontend:${{ github.sha }}
+
+      # - name: Update deployment manifest
+      #   run: |
+      #     sed -i "s|image: rusxl/agama-frontend:.*|image: rusxl/agama-frontend:${{ github.sha }}|g" kubernetes/apps/frontend/01-deployment.yaml
+
+      # - name: Deployment changes
+      #   uses: stefanzweifel/git-auto-commit-action@v5
+      #   with:
+      #     commit_message: "ci(frontend): update image tag to ${{ github.sha }}"
