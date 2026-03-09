@@ -3,34 +3,17 @@
 ### Namespaces
 - argocd for ArgoCD resources
 - tidb-admin for tidb operator
-- api for fastapi app
+- agama for fastapi app
+- agama for nextjs app
 - db for tidb-cluster
 
 ## Bootstrap
 ```bash
-chmod +x bootstrap.sh
-./bootstrap.sh
-```
-
-## Open
-```bash
+chmod +x backend.sh
+chmod +x frontend.sh
 chmod +x open.sh
+
+./backend.sh
+./frontend.sh
 ./open.sh
-```
-
-## API
-
-Opens at :8080
-
-## ArgoCD
-
-Looks for changes in internal apps on GitHub, syncs the cluster with the remote.
-
-Opens at :8088
-
-## Frontend
-
-Run locally
-```bash
-npm run dev
 ```

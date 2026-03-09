@@ -1,6 +1,8 @@
 import ItemList from "./items";
 import { getItems } from "./actions";
 
+export const dynamic = "force-dynamic";
+
 // This runs entirely on the server
 export default async function HomePage() {
   let items = [];

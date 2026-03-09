@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e
 
-# API
+# Frontend
 kubectl apply -f kubernetes/apps/frontend
