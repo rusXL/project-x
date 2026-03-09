@@ -5,9 +5,6 @@ on:
     branches: [main]
     paths: ['frontend/**', '.github/workflows/frontend.yml']
 
-permissions:
-  contents: write
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -26,20 +23,15 @@ jobs:
           cd frontend
           npm ci
 
-      - name: Formatting
+      - name: Formatting check
         run: |
           cd frontend
-          npx prettier --write .
+          npx prettier --check .
 
-      - name: Linting
+      - name: Lint check
         run: |
           cd frontend
-          npx eslint . --fix
-
-      - name: Style changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "ci(frontend): auto-format with prettier"
+          npx eslint .
 
       - name: Docker Hub login
         uses: docker/login-action@v3
@@ -53,12 +45,3 @@ jobs:
           context: ./frontend
           push: true
           tags: rusxl/agama-frontend:${{ github.sha }}
-
-      # - name: Update deployment manifest
-      #   run: |
-      #     sed -i "s|image: rusxl/agama-frontend:.*|image: rusxl/agama-frontend:${{ github.sha }}|g" kubernetes/apps/frontend/01-deployment.yaml
-
-      # - name: Deployment changes
-      #   uses: stefanzweifel/git-auto-commit-action@v5
-      #   with:
-      #     commit_message: "ci(frontend): update image tag to ${{ github.sha }}"

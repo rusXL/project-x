@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: ["API", "Frontend"]
+    types: [completed]
+
+permissions:
+  contents: write
+
+jobs:
+  update-manifest:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update API manifest
+        if: ${{ github.event.workflow_run.name == 'API' }}
+        run: |
+          git pull --rebase origin main
+          sed -i "s|image: rusxl/agama-api:.*|image: rusxl/agama-api:${{ github.event.workflow_run.head_sha }}|g" kubernetes/apps/api/01-deployment.yaml
+
+      - name: Update Frontend manifest
+        if: ${{ github.event.workflow_run.name == 'Frontend' }}
+        run: |
+          git pull --rebase origin main
+          sed -i "s|image: rusxl/agama-frontend:.*|image: rusxl/agama-frontend:${{ github.event.workflow_run.head_sha }}|g" kubernetes/apps/frontend/01-deployment.yaml
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci(${{ github.event.workflow_run.name == 'API' && 'api' || 'frontend' }}): update image tag to ${{ github.event.workflow_run.head_sha }}"
