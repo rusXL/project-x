@@ -7,3 +7,11 @@
 
 - Calculate resources and nodes needed
 - Ansible, Terraform deployment
+
+- load balancer SSL cert?
+- DNS?
+
+
+- SSR for frontend
+- k8s and argocd for frontend cluster
+- terraform deployments for cloud and on-premise cluster

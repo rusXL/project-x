@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/rusXL/project-x.git
-    targetRevision: HEAD
+    targetRevision: dev
     path: kubernetes/apps/api
   destination:
     server: https://kubernetes.default.svc

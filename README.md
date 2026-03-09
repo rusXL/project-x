@@ -28,3 +28,9 @@ Looks for changes in internal apps on GitHub, syncs the cluster with the remote.
 
 Opens at :8088
 
+## Frontend
+
+Run locally
+```bash
+npm run dev
+```
