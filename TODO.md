@@ -23,15 +23,28 @@
 
 
 aws eks update-kubeconfig --name cluster-a --region us-east-1
-
-curl -sfk https://rancher.34.10.170.110.nip.io/v3/import/wgxnxwvchstzq7kcpfmtrqsnpmc4k2f8x8tv9wrk9srrmwc74n5wf2_c-92qvr.yaml | \
-  kubectl apply -f - --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
-
-
 gcloud container clusters get-credentials cluster-g --zone us-central1-a --project cloud-computing-476715
 
+Register EKS cluster with Rancher:
+```bash
+kubectl get certificate -n cattle-system --context gke_cloud-computing-476715_us-central1-a_cluster-g
+
+curl -sfk "https://rancher.35.193.67.171.nip.io/v3/import/ctq4d8qf8xvdvgbsg4fkbslpsxn8g8f6hqnfb7hvbrkfczp5gmnpdz_c-7fgzm.yaml" | kubectl apply -f - --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
+```
+
+Change API IP deployment to:
+```bash
+kubectl get svc traefik -n traefik --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
+
+dig +short <hostname>
+```
+
+
+Activate Fleet:
+```bash
 kubectl apply -f kubernetes/eks/fleet-repo.yaml --context gke_cloud-computing-476715_us-central1-a_cluster-g
 kubectl apply -f kubernetes/gke/fleet-repo.yaml --context gke_cloud-computing-476715_us-central1-a_cluster-g
+```
 
 
 

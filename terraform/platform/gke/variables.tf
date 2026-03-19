@@ -5,7 +5,7 @@ variable "rancher_hostname" {
   type        = string
 }
 
-variable "rancher_bootstrap_password" {
+variable "rancher_admin_password" {
   description = "Rancher initial admin password."
   type        = string
   sensitive   = true

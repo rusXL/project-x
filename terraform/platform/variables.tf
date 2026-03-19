@@ -44,11 +44,6 @@ variable "rancher_hostname" {
   description = "Rancher hostname (e.g. rancher.example.com)."
   type        = string
 }
-variable "rancher_bootstrap_password" {
-  description = "Rancher initial admin password (first boot only)."
-  type        = string
-  sensitive   = true
-}
 variable "rancher_admin_password" {
   description = "Rancher final admin password (replaces bootstrap password)."
   type        = string

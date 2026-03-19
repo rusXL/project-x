@@ -6,13 +6,13 @@ module "gke" {
   }
   gke_lb_ip = var.gke_lb_ip
 
-  rancher_hostname           = var.rancher_hostname
-  rancher_bootstrap_password = var.rancher_bootstrap_password
+  rancher_hostname       = var.rancher_hostname
+  rancher_admin_password = var.rancher_admin_password
 }
 
 resource "rancher2_bootstrap" "admin" {
   provider         = rancher2.bootstrap
-  initial_password = var.rancher_bootstrap_password
+  initial_password = var.rancher_admin_password
   password         = var.rancher_admin_password
 
   depends_on = [module.gke]
