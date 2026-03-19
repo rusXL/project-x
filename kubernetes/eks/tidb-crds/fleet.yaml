@@ -1,0 +1,3 @@
+name: tidb-crds
+namespace: tidb-admin
+kustomize: {}

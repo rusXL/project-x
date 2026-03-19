@@ -1,0 +1,11 @@
+# fleet repo
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: gke
+  namespace: fleet-local
+spec:
+  repo: https://github.com/rusXL/project-x.git
+  branch: main
+  paths:
+    - kubernetes/gke/frontend

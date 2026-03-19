@@ -9,9 +9,6 @@
 
 ## Bootstrap
 ```bash
-chmod +x scripts/*.sh
-
-./scripts/backend.sh
-./scripts/frontend.sh
-./scripts/open.sh
+terraform apply -target=helm_release.rancher # rancher
+terraform apply # fleet
 ```

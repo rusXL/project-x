@@ -1,0 +1,4 @@
+name: tidb-cluster
+namespace: db
+dependsOn:
+  - name: tidb-operator

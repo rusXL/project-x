@@ -1,0 +1,16 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: eks
+  namespace: fleet-default
+spec:
+  repo: https://github.com/rusXL/project-x.git
+  branch: main
+  paths:
+    - kubernetes/eks/tidb-crds
+    - kubernetes/eks/tidb-operator
+    - kubernetes/eks/tidb-cluster
+    - kubernetes/eks/api
+  targets:
+    - name: cluster-a
+      clusterName: cluster-a
