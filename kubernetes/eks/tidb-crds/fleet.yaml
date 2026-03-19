@@ -1,2 +1,4 @@
 name: tidb-crds
-kustomize: {}
+kustomize:
+  dir: .
+  
