@@ -71,15 +71,16 @@ resource "aws_eks_node_group" "node_group_a" {
     aws_subnet.subnet_b.id,
   ]
   instance_types = ["t3.small"]
-
   scaling_config {
     desired_size = var.aws_node_count
     min_size     = 1
     max_size     = var.aws_node_count
   }
-
   capacity_type = "ON_DEMAND"
-
+  launch_template {
+    id      = aws_launch_template.eks_nodes.id
+    version = aws_launch_template.eks_nodes.default_version
+  }
   depends_on = [
     aws_iam_role_policy_attachment.eks_worker_node_policy,
     aws_iam_role_policy_attachment.eks_cni_policy,

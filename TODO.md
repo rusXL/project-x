@@ -18,7 +18,7 @@
 kubectl get certificate -n cattle-system --context gke_cloud-computing-476715_us-central1-a_cluster-g
 
 
-
+fix eks volume claims
 
 
 
@@ -31,7 +31,7 @@ gcloud container clusters get-credentials cluster-g --zone us-central1-a --proje
 
 Install rancher agent in eks:
 ```bash
-curl -sfk "https://rancher.34.170.172.234.nip.io/v3/import/7v4zrv4lfmhtz6xk8mlr8kcqqfqqlnw495p55h7nfm9k86mvcm55hw_c-vtmtf.yaml" | kubectl apply -f - --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
+curl -sfk "https://rancher.136.119.91.49.nip.io/v3/import/ltdf49v7546qg9ghmwmxd24kq579qqc2cjn4sgr9rhssr7sw8hkn6k_c-nv6rs.yaml" | kubectl apply -f - --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
 ```
 Install TiDB CRDs and Operator
 ```bash
