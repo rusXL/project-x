@@ -18,3 +18,4 @@ spec:
         mounts:
         - type: data
         storage: 1Gi
+        storageClassName: gp2

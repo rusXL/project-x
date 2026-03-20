@@ -70,11 +70,11 @@ resource "aws_eks_node_group" "node_group_a" {
     aws_subnet.subnet_a.id,
     aws_subnet.subnet_b.id,
   ]
-  instance_types = ["t3.micro"]
+  instance_types = ["t3.small"]
 
   scaling_config {
     desired_size = var.aws_node_count
-    min_size     = 3
+    min_size     = 1
     max_size     = var.aws_node_count
   }
 

@@ -18,3 +18,4 @@ spec:
         mounts:
         - type: data
         storage: 1Gi # TODO: change to 10Gi
+        storageClassName: gp2
