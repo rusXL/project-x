@@ -25,6 +25,7 @@ provider "rancher2" {
   alias     = "bootstrap"
   api_url   = "https://${local.rancher_hostname}"
   bootstrap = true
+  insecure  = true
 }
 
 # Rancher admin — used for all subsequent Rancher resources
@@ -32,4 +33,5 @@ provider "rancher2" {
   alias     = "admin"
   api_url   = "https://${local.rancher_hostname}"
   token_key = rancher2_bootstrap.admin.token
+  insecure  = true
 }

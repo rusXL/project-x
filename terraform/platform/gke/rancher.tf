@@ -30,12 +30,17 @@ resource "terraform_data" "wait_for_rancher" {
   depends_on = [helm_release.rancher]
   provisioner "local-exec" {
     command = <<-EOT
-      echo "Waiting for Rancher to be ready..."
-      until curl -sfk -o /dev/null "https://${var.rancher_hostname}/ping"; do
-        echo "Rancher not ready yet, retrying in 10s..."
-        sleep 10
+      echo "Waiting for Rancher to be ready (with valid TLS)..."
+      for i in $(seq 1 60); do
+        if curl -sf -o /dev/null "https://${var.rancher_hostname}/ping" 2>/dev/null; then
+          echo "Rancher is up with valid TLS!"
+          exit 0
+        fi
+        echo "Attempt $i/60: Rancher not ready yet (cert may still be provisioning), retrying in 15s..."
+        sleep 15
       done
-      echo "Rancher is up!"
+      echo "ERROR: Timed out waiting for Rancher with valid TLS certificate"
+      exit 1
     EOT
   }
 }
