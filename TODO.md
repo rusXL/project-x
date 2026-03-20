@@ -1,24 +1,20 @@
+For future:
+
 - Secret management for api config, argodb dashboard, later grafana dashboard
 - HPA for api
 - Configure scheduling policies to distribute components evenly across nodes
-- Kong Ingress Controller in front of api - acts as prod load balancer and api gateway
 - Redis
 - Monitoring, Alerting with Prometheus + Grafana
 
-- Calculate resources and nodes needed
-- Ansible, Terraform deployment
 
-- load balancer SSL cert?
-- DNS?
 
 - terraform, ingress for frontend and backend
 - Rancher fleet cd
 - ssl for load balancer
 
-kubectl get certificate -n cattle-system --context gke_cloud-computing-476715_us-central1-a_cluster-g
 
 
-fix eks volume claims
+URGENT: fix eks volume claims
 
 
 
@@ -31,7 +27,7 @@ gcloud container clusters get-credentials cluster-g --zone us-central1-a --proje
 
 Install rancher agent in eks:
 ```bash
-curl -sfk "https://rancher.136.119.91.49.nip.io/v3/import/ltdf49v7546qg9ghmwmxd24kq579qqc2cjn4sgr9rhssr7sw8hkn6k_c-nv6rs.yaml" | kubectl apply -f - --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
+curl -sfk "https://rancher.34.123.185.61.nip.io/v3/import/hgknxwb2wwj274tz49mws8nzst8dmrlc2vtlswtczbrd2brphwcmwm_c-m9qj4.yaml" | kubectl apply -f - --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
 ```
 Install TiDB CRDs and Operator
 ```bash
@@ -48,6 +44,11 @@ kubectl get svc traefik -n traefik --context arn:aws:eks:us-east-1:454371013564:
 dig +short <hostname>
 ```
 
+Configure gp3 storage
+```bash
+kubectl apply -f kubernetes/eks/storage/gp3.yaml \
+  --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
+```
 
 Activate Fleet (will turn up frontend, api, and tidb cluster):
 ```bash
@@ -62,4 +63,4 @@ kubectl apply \
 
 
 
-private dns for rancher ui, backend internal lb
+TODO: private dns for rancher ui, backend internal lb
