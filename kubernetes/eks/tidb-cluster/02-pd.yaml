@@ -19,3 +19,8 @@ spec:
         - type: data
         storage: 1Gi
         storageClassName: gp2
+      overlay:
+        volumeClaims:
+        - name: data
+          spec:
+            storageClassName: gp2
