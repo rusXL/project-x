@@ -18,5 +18,5 @@ spec:
         mounts:
         - type: data
         storage: 1Gi
-        storageClassName: gp3
+        storageClassName: gp2
         

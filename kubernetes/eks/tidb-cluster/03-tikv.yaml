@@ -13,9 +13,16 @@ spec:
         author: pingcap
     spec:
       version: v8.5.2
+      resources:
+        limits:
+          memory: "1500Mi"
+          cpu: "1"
+        requests:
+          memory: "1Gi"
+          cpu: "500m"
       volumes:
       - name: data
         mounts:
         - type: data
         storage: 1Gi # TODO: change to 10Gi
-        storageClassName: gp3
+        storageClassName: gp2
