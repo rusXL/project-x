@@ -17,7 +17,7 @@ spec:
       - name: data
         mounts:
         - type: data
-        storage: 1Gi # TODO: change to 10Gi
+        storage: 10Gi
         storageClassName: gp3
       overlay:
         pod:
