@@ -1,5 +1,5 @@
 name: api
-namespace: agama
+defaultNamespace: agama
 dependsOn:
   - name: tidb-cluster
   

@@ -51,8 +51,10 @@ dig +short <hostname>
 
 Activate Fleet (will turn up frontend, api, and tidb cluster):
 ```bash
-kubectl apply -f kubernetes/eks/fleet-repo.yaml --context gke_cloud-computing-476715_us-central1-a_cluster-g
-kubectl apply -f kubernetes/gke/fleet-repo.yaml --context gke_cloud-computing-476715_us-central1-a_cluster-g
+kubectl apply \
+  -f kubernetes/eks/fleet-repo.yaml \
+  -f kubernetes/gke/fleet-repo.yaml \
+  --context gke_cloud-computing-476715_us-central1-a_cluster-g
 ```
 
 

@@ -1,2 +1,2 @@
 name: tidb-cluster
-namespace: db
+defaultNamespace: db
