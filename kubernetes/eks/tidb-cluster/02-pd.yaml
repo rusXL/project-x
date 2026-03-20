@@ -18,10 +18,5 @@ spec:
         mounts:
         - type: data
         storage: 1Gi
-      overlay:
-        volumeClaims:
-        - name: data
-          volumeClaim:
-            spec:
-              storageClassName: gp2
-              
+        storageClassName: gp2
+        

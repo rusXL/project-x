@@ -18,9 +18,4 @@ spec:
         mounts:
         - type: data
         storage: 1Gi # TODO: change to 10Gi
-      overlay:
-        volumeClaims:
-        - name: data
-          volumeClaim:
-            spec:
-              storageClassName: gp2
+        storageClassName: gp2
