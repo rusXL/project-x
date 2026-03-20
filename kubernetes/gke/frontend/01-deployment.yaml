@@ -26,5 +26,5 @@ spec:
             - name: HOSTNAME
               value: "0.0.0.0"
             - name: API_URL
-              value: "http://10.1.2.151"
+              value: "http://10.1.1.172"
           # TODO: resources, probes

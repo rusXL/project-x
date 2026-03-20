@@ -4,9 +4,9 @@
 provider "helm" {
   alias = "gke"
   kubernetes = {
-    host                   = var.gke_endpoint
-    cluster_ca_certificate = base64decode(var.gke_ca_cert)
-    token                  = var.gke_token
+    host                   = data.terraform_remote_state.infra.outputs.gke_endpoint
+    cluster_ca_certificate = base64decode(data.terraform_remote_state.infra.outputs.gke_ca_cert)
+    token                  = data.terraform_remote_state.infra.outputs.gke_token
   }
 }
 
@@ -14,24 +14,22 @@ provider "helm" {
 provider "helm" {
   alias = "eks"
   kubernetes = {
-    host                   = var.eks_endpoint
-    cluster_ca_certificate = base64decode(var.eks_ca_cert)
-    token                  = var.eks_token
+    host                   = data.terraform_remote_state.infra.outputs.eks_endpoint
+    cluster_ca_certificate = base64decode(data.terraform_remote_state.infra.outputs.eks_ca_cert)
+    token                  = data.terraform_remote_state.infra.outputs.eks_token
   }
 }
 
 # Rancher bootstrap — used once to init admin + get token
 provider "rancher2" {
   alias     = "bootstrap"
-  api_url   = "https://${var.rancher_hostname}"
+  api_url   = "https://${local.rancher_hostname}"
   bootstrap = true
-  insecure  = true
 }
 
 # Rancher admin — used for all subsequent Rancher resources
 provider "rancher2" {
   alias     = "admin"
-  api_url   = "https://${var.rancher_hostname}"
+  api_url   = "https://${local.rancher_hostname}"
   token_key = rancher2_bootstrap.admin.token
-  insecure  = true
 }

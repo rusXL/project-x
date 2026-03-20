@@ -1,4 +1,0 @@
-name: tidb-crds
-kustomize:
-  dir: .
-  

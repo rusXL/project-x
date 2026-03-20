@@ -7,8 +7,6 @@ spec:
   repo: https://github.com/rusXL/project-x.git
   branch: main
   paths:
-    - kubernetes/eks/tidb-crds
-    - kubernetes/eks/tidb-operator
     - kubernetes/eks/tidb-cluster
     - kubernetes/eks/api
   targets:

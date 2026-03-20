@@ -15,22 +15,31 @@
 - Rancher fleet cd
 - ssl for load balancer
 
+kubectl get certificate -n cattle-system --context gke_cloud-computing-476715_us-central1-a_cluster-g
 
 
 
 
 
+
+infra terraform apply
+platform terraform apply
 
 
 aws eks update-kubeconfig --name cluster-a --region us-east-1
 gcloud container clusters get-credentials cluster-g --zone us-central1-a --project cloud-computing-476715
 
-Register EKS cluster with Rancher:
+Install rancher agent in eks:
 ```bash
-kubectl get certificate -n cattle-system --context gke_cloud-computing-476715_us-central1-a_cluster-g
-
-curl -sfk "https://rancher.35.193.67.171.nip.io/v3/import/ctq4d8qf8xvdvgbsg4fkbslpsxn8g8f6hqnfb7hvbrkfczp5gmnpdz_c-7fgzm.yaml" | kubectl apply -f - --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
+curl -sfk "https://rancher.34.170.172.234.nip.io/v3/import/7v4zrv4lfmhtz6xk8mlr8kcqqfqqlnw495p55h7nfm9k86mvcm55hw_c-vtmtf.yaml" | kubectl apply -f - --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
 ```
+Install TiDB CRDs and Operator
+```bash
+kubectl apply -f https://github.com/pingcap/tidb-operator/releases/download/v2.0.0/tidb-operator.crds.yaml --server-side --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
+
+kubectl apply -f https://github.com/pingcap/tidb-operator/releases/download/v2.0.0/tidb-operator.yaml --server-side --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
+```
+
 
 Change API IP deployment to:
 ```bash
@@ -40,7 +49,7 @@ dig +short <hostname>
 ```
 
 
-Activate Fleet:
+Activate Fleet (will turn up frontend, api, and tidb cluster):
 ```bash
 kubectl apply -f kubernetes/eks/fleet-repo.yaml --context gke_cloud-computing-476715_us-central1-a_cluster-g
 kubectl apply -f kubernetes/gke/fleet-repo.yaml --context gke_cloud-computing-476715_us-central1-a_cluster-g

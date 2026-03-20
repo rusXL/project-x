@@ -1,8 +1,0 @@
-name: tidb-operator
-namespace: tidb-admin
-helm:
-  chart: "oci://ghcr.io/pingcap/charts/tidb-operator"
-  version: v2.0.0
-dependsOn:
-  - name: tidb-crds
-  
