@@ -52,6 +52,7 @@ Instrumentator().instrument(app).expose(app)
 app.include_router(items.router)
 
 
+#
 @app.get("/health")
 async def health():
     return {"status": "ok"}
