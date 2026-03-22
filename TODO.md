@@ -1,5 +1,0 @@
-- Secret management for api config, argodb dashboard, later grafana dashboard
-- HPA for api
-- Configure scheduling policies to distribute components evenly across nodes
-- Redis
-- Monitoring, Alerting with Prometheus + Grafana
