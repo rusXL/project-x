@@ -19,13 +19,13 @@ jobs:
         if: ${{ github.event.workflow_run.name == 'API' }}
         run: |
           git pull --rebase origin main
-          sed -i "s|image: rusxl/agama-api:.*|image: rusxl/agama-api:${{ github.event.workflow_run.head_sha }}|g" kubernetes/apps/api/01-deployment.yaml
+          sed -i "s|image: rusxl/agama-api:.*|image: rusxl/agama-api:${{ github.event.workflow_run.head_sha }}|g" kubernetes/eks/api/01-deployment.yaml
 
       - name: Update Frontend manifest
         if: ${{ github.event.workflow_run.name == 'Frontend' }}
         run: |
           git pull --rebase origin main
-          sed -i "s|image: rusxl/agama-frontend:.*|image: rusxl/agama-frontend:${{ github.event.workflow_run.head_sha }}|g" kubernetes/apps/frontend/01-deployment.yaml
+          sed -i "s|image: rusxl/agama-frontend:.*|image: rusxl/agama-frontend:${{ github.event.workflow_run.head_sha }}|g" kubernetes/gke/frontend/01-deployment.yaml
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
