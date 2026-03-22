@@ -10,6 +10,14 @@ module "vpn_ha" {
   network    = var.vpc_g_id
   router_asn = var.gcp_bgp_asn
 
+  router_advertise_config = {
+    mode   = "CUSTOM"
+    groups = ["ALL_SUBNETS"]
+    ip_ranges = {
+      "35.199.192.0/19" = "Cloud DNS forwarding"
+    }
+  }
+
   peer_external_gateway = {
     redundancy_type = "FOUR_IPS_REDUNDANCY"
     interfaces = [

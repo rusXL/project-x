@@ -10,7 +10,7 @@ resource "aws_security_group" "resolver" {
     from_port   = 53
     to_port     = 53
     protocol    = "udp"
-    cidr_blocks = [var.gcp_subnet_cidr, var.aws_vpc_cidr]
+    cidr_blocks = ["35.199.192.0/19", var.gcp_subnet_cidr, var.aws_vpc_cidr]
   }
 
   ingress {
@@ -18,7 +18,7 @@ resource "aws_security_group" "resolver" {
     from_port   = 53
     to_port     = 53
     protocol    = "tcp"
-    cidr_blocks = [var.gcp_subnet_cidr, var.aws_vpc_cidr]
+    cidr_blocks = ["35.199.192.0/19", var.gcp_subnet_cidr, var.aws_vpc_cidr]
   }
 
   egress {
