@@ -27,6 +27,21 @@ module "eks" {
   aws_zone_b        = var.aws_zone_b
 }
 
+module "dns" {
+  source = "./dns"
+  providers = {
+    aws    = aws
+    google = google
+  }
+  vpc_a_id       = module.eks.vpc_a_id
+  subnet_a_id    = module.eks.subnet_a_id
+  subnet_b_id    = module.eks.subnet_b_id
+  vpc_g_id        = module.gke.vpc_g_id
+  gcp_subnet_cidr = var.gcp_subnet_cidr
+  aws_vpc_cidr    = var.aws_vpc_cidr
+}
+
+
 module "vpn" {
   source = "./vpn"
   providers = {

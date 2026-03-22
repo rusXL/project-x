@@ -8,9 +8,11 @@ resource "helm_release" "cert_manager" {
   namespace        = "cert-manager"
   create_namespace = true
   set = [
-    { name = "crds.enabled", value = "true" }
+    { name = "crds.enabled", value = "true" },
+    { name = "startupapicheck.enabled", value = "true" }
   ]
-  wait       = true
-  timeout    = 300
+  wait           = true
+  wait_for_jobs  = true
+  timeout        = 300
   depends_on = [helm_release.traefik]
 }

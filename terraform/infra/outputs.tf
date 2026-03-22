@@ -12,6 +12,10 @@ output "gke_lb_ip" {
   value = module.gke.gke_lb_ip
 }
 
+output "route53_zone_id" {
+  value = module.dns.route53_zone_id
+}
+
 # EKS
 output "eks_endpoint" {
   value     = module.eks.eks_endpoint

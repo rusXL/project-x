@@ -33,11 +33,15 @@ resource "rancher2_bootstrap" "admin" {
 module "eks" {
   source = "./eks"
   providers = {
-    helm     = helm.eks
-    rancher2 = rancher2.admin
+    helm       = helm.eks
+    rancher2   = rancher2.admin
+    aws        = aws
+    kubernetes = kubernetes.eks
   }
+
   rancher_hostname = local.rancher_hostname
   rancher_token    = rancher2_bootstrap.admin.token
+  aws_zone_id      = data.terraform_remote_state.infra.outputs.route53_zone_id
 
   depends_on = [rancher2_bootstrap.admin]
 }

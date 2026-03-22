@@ -8,3 +8,6 @@ variable "rancher_token" {
   sensitive = true
 }
 
+variable "aws_zone_id" {
+  type = string
+}

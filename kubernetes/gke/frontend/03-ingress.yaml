@@ -11,7 +11,7 @@ spec:
   ingressClassName: traefik
   tls:
   - hosts:
-    - "35.222.67.201.nip.io"
+    - "34.172.165.232.nip.io"
     secretName: frontend-tls-secret
   rules:
   - http:

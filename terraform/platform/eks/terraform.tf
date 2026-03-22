@@ -6,5 +6,11 @@ terraform {
     rancher2 = {
       source = "rancher/rancher2"
     }
+    aws = {
+      source = "hashicorp/aws"
+    }
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+    }
   }
 }

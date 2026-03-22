@@ -18,6 +18,10 @@ terraform {
       source  = "rancher/rancher2"
       version = "~> 13.0"
     }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.0"
+    }
   }
 
   required_version = ">= 1.5"

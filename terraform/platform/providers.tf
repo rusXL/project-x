@@ -35,6 +35,13 @@ provider "helm" {
   }
 }
 
+provider "kubernetes" {
+  alias                  = "eks"
+  host                   = data.terraform_remote_state.infra.outputs.eks_endpoint
+  cluster_ca_certificate = base64decode(data.terraform_remote_state.infra.outputs.eks_ca_cert)
+  token                  = data.aws_eks_cluster_auth.cluster_a.token
+}
+
 # Rancher bootstrap — used once to init admin + get token
 provider "rancher2" {
   alias     = "bootstrap"

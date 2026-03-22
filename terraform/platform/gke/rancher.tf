@@ -7,7 +7,7 @@ resource "helm_release" "rancher" {
   version          = "2.13.3"
   namespace        = "cattle-system"
   create_namespace = true
-  depends_on       = [helm_release.cert_manager]
+
   set = [
     { name = "bootstrapPassword", value = var.rancher_admin_password },
     { name = "hostname", value = var.rancher_hostname },
@@ -24,6 +24,8 @@ resource "helm_release" "rancher" {
   ]
   wait    = true
   timeout = 600
+
+  depends_on = [helm_release.cert_manager]
 }
 
 resource "terraform_data" "wait_for_rancher" {
@@ -31,13 +33,17 @@ resource "terraform_data" "wait_for_rancher" {
   provisioner "local-exec" {
     command = <<-EOT
       echo "Waiting for Rancher API to be ready (with valid TLS)..."
-      for i in $(seq 1 60); do
+      for i in $(seq 1 40); do
         if curl -sf -o /dev/null "https://${var.rancher_hostname}/ping" 2>/dev/null; then
           echo "Rancher API is responding with valid TLS!"
           break
         fi
-        echo "Attempt $i/60: Rancher API not ready yet, retrying in 15s..."
+        echo "Attempt $i/40: Rancher API not ready yet, retrying in 15s..."
         sleep 15
+        if [ "$i" = "40" ]; then
+          echo "ERROR: Timed out waiting for valid TLS on Rancher"
+          exit 1
+        fi
       done
 
       echo "Waiting for Rancher webhook to be fully operational..."
