@@ -3,8 +3,3 @@
 - Configure scheduling policies to distribute components evenly across nodes
 - Redis
 - Monitoring, Alerting with Prometheus + Grafana
-
-
-TODO:
-- TLS for frontend
-- internal dns for api url
