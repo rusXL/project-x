@@ -2,24 +2,13 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import select, text
-from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy import select
 from prometheus_fastapi_instrumentator import Instrumentator
 
 from app.config import settings
 from app.database import Base, engine, SessionLocal
 from app.models.item import Item
 from app.routers import items
-
-
-# TODO: init db in kubernetes manifests once that feature is available for tidb v2 operator
-async def _create_database() -> None:
-    db_name = settings.database_url.rsplit("/", 1)[-1]
-    root_url = settings.database_url.rsplit("/", 1)[0]
-    root_engine = create_async_engine(root_url)
-    async with root_engine.begin() as conn:
-        await conn.execute(text(f"CREATE DATABASE IF NOT EXISTS `{db_name}`"))
-    await root_engine.dispose()
 
 
 async def _create_tables() -> None:
@@ -44,7 +33,6 @@ async def _seed_demo_items() -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await _create_database()
     await _create_tables()
     await _seed_demo_items()
     yield

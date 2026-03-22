@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: basic
+  namespace: db
+data:
+  bootstrap-sql: |
+    CREATE DATABASE IF NOT EXISTS `agama`;

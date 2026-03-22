@@ -3,4 +3,6 @@ kind: Cluster
 metadata:
   name: basic
   namespace: db
-spec: {}
+spec:
+  bootstrapSQL:
+    name: basic
