@@ -1,9 +1,11 @@
 # TODO
 
+## Test
+- tidb bootstrap script (db creation)
+- tidb allow api only
+
 ## Security
-- kubernetes secret management for tidb connection
 - restrict vpc firewall rules in infra for gcp and aws
-- consider moving to private subnets with a single nat for internet access
 
 ## Monitoring
 - prometheus + grafana helm charts
