@@ -1,2 +1,4 @@
 name: tidb-cluster
 defaultNamespace: db
+dependsOn:
+  - name: eks-storage

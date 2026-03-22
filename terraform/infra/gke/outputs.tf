@@ -1,4 +1,3 @@
-data "google_client_config" "default" {}
 
 output "gke_endpoint" {
   value     = google_container_cluster.cluster_g.endpoint
@@ -18,10 +17,6 @@ output "gke_pod_cidr" {
   value = google_container_cluster.cluster_g.cluster_ipv4_cidr
 }
 
-output "gke_token" {
-  value     = data.google_client_config.default.access_token
-  sensitive = true
-}
 
 output "gke_lb_ip" {
   value = google_compute_address.lb_ip.address

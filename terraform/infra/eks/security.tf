@@ -1,7 +1,4 @@
 # auth, security group
-data "aws_eks_cluster_auth" "cluster_a" {
-  name = aws_eks_cluster.cluster_a.name
-}
 
 resource "aws_security_group_rule" "allow_from_gcp" {
   type              = "ingress"

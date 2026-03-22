@@ -7,10 +7,7 @@ output "gke_ca_cert" {
   value     = module.gke.gke_ca_cert
   sensitive = true
 }
-output "gke_token" {
-  value     = module.gke.gke_token
-  sensitive = true
-}
+
 output "gke_lb_ip" {
   value = module.gke.gke_lb_ip
 }
@@ -24,7 +21,4 @@ output "eks_ca_cert" {
   value     = module.eks.eks_ca_cert
   sensitive = true
 }
-output "eks_token" {
-  value     = module.eks.eks_token
-  sensitive = true
-}
+

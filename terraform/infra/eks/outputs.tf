@@ -8,10 +8,6 @@ output "eks_ca_cert" {
   sensitive = true
 }
 
-output "eks_token" {
-  value     = data.aws_eks_cluster_auth.cluster_a.token
-  sensitive = true
-}
 
 output "vpc_a_id" {
   value = aws_vpc.vpc_a.id

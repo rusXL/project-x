@@ -3,8 +3,16 @@ kind: Ingress
 metadata:
   name: frontend-ingress
   namespace: agama
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: traefik
+  tls:
+  - hosts:
+    - "35.222.67.201.nip.io"
+    secretName: frontend-tls-secret
   rules:
   - http:
       paths:

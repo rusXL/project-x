@@ -1,12 +1,27 @@
 # providers
 
+provider "google" {
+  project = "cloud-computing-476715"
+  region  = "us-central1"
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+data "google_client_config" "default" {}
+
+data "aws_eks_cluster_auth" "cluster_a" {
+  name = "cluster-a"
+}
+
 # GCP
 provider "helm" {
   alias = "gke"
   kubernetes = {
     host                   = data.terraform_remote_state.infra.outputs.gke_endpoint
     cluster_ca_certificate = base64decode(data.terraform_remote_state.infra.outputs.gke_ca_cert)
-    token                  = data.terraform_remote_state.infra.outputs.gke_token
+    token                  = data.google_client_config.default.access_token
   }
 }
 
@@ -16,7 +31,7 @@ provider "helm" {
   kubernetes = {
     host                   = data.terraform_remote_state.infra.outputs.eks_endpoint
     cluster_ca_certificate = base64decode(data.terraform_remote_state.infra.outputs.eks_ca_cert)
-    token                  = data.terraform_remote_state.infra.outputs.eks_token
+    token                  = data.aws_eks_cluster_auth.cluster_a.token
   }
 }
 
