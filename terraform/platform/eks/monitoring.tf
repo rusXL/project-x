@@ -12,6 +12,7 @@ resource "helm_release" "kube_prometheus_stack" {
     { name = "grafana.sidecar.dashboards.enabled", value = "true" },
     { name = "grafana.sidecar.dashboards.searchNamespace", value = "ALL" },
     { name = "alertmanager.enabled", value = "false" },
+    { name = "grafana.adminPassword", value = var.grafana_admin_password },
   ]
 
   wait    = true

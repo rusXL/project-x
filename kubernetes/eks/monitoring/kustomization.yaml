@@ -1,0 +1,13 @@
+resources:
+  - 01-servicemonitor-api.yaml
+  - 02-ingress.yaml
+
+configMapGenerator:
+  - name: api-dashboard
+    namespace: monitoring
+    files:
+      - api-dashboard.json
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"

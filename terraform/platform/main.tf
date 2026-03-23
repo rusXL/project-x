@@ -39,9 +39,10 @@ module "eks" {
     kubernetes = kubernetes.eks
   }
 
-  rancher_hostname = local.rancher_hostname
-  rancher_token    = rancher2_bootstrap.admin.token
-  aws_zone_id      = data.terraform_remote_state.infra.outputs.route53_zone_id
+  rancher_hostname       = local.rancher_hostname
+  rancher_token          = rancher2_bootstrap.admin.token
+  aws_zone_id            = data.terraform_remote_state.infra.outputs.route53_zone_id
+  grafana_admin_password = var.grafana_admin_password
 
   depends_on = [rancher2_bootstrap.admin]
 }
