@@ -5,6 +5,6 @@ cd "$(dirname "$0")/.."
 
 # platform first, then infra
 cd terraform/platform
-terraform destroy
+terraform destroy -auto-approve
 cd ../infra
-terraform destroy
+terraform destroy -auto-approve

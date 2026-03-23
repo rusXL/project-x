@@ -8,8 +8,8 @@ GKE_CTX="gke_cloud-computing-476715_us-central1-a_cluster-g"
 
 # infra
 cd terraform/infra
-# terraform init
-# terraform apply
+terraform init
+terraform apply -auto-approve
 
 # update LB IP in ingress manifests
 LB_IP=$(terraform output -raw gke_lb_ip)
@@ -17,8 +17,8 @@ sed -i "s/\"frontend\.[0-9.]*\.nip\.io\"/\"frontend.${LB_IP}.nip.io\"/" ../../ku
 sed -i "s/\"grafana\.[0-9.]*\.nip\.io\"/\"grafana.${LB_IP}.nip.io\"/" ../../kubernetes/gke/grafana/02-ingress.yaml
 
 cd ../platform
-# terraform init
-# terraform apply
+terraform init
+terraform apply -auto-approve
 cd ../..
 
 # kubeconfig
