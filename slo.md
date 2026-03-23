@@ -31,18 +31,20 @@ A request is considered *successful* if it results in an HTTP **2xx** or **3xx**
 ### SLI Type: Latency
 
 **SLI Specification:**
-A request is considered *fast* if the request time is **< 100ms**.
-Only successful requests (2xx) are considered for latency to avoid bias from early-terminating failures.
+A request is considered *fast* if the average API response time is **< 40ms**.
+This measures only the API-side latency (time spent in the FastAPI backend + TiDB query), not the full end-user round-trip which also includes the frontend, cross-cloud network hops (GKE → VPN → EKS), and public internet.
 
 **SLI Implementation:**
+- Data source: Prometheus (via `prometheus_fastapi_instrumentator`).
+- The `http_request_duration_seconds` metric does not carry a `status` label, so all requests (successful and failed) are included in the average.
 
 ```promql
-sum(rate(http_request_duration_seconds_sum{handler="/items", method="GET", status="2xx"}[10m]))
-  / sum(rate(http_request_duration_seconds_count{handler="/items", method="GET", status="2xx"}[10m]))
+sum(rate(http_request_duration_seconds_sum{handler="/items", method="GET"}[10m]))
+  / sum(rate(http_request_duration_seconds_count{handler="/items", method="GET"}[10m]))
 ```
 
 **SLO:**
-Average page load time < **100ms** over 10-minute rolling windows.
+Average API response time < **40ms** over 10-minute rolling windows.
 
 ---
 
@@ -74,15 +76,17 @@ A *successful* submission returns a **2xx** or **3xx** HTTP status.
 ### SLI Type: Latency
 
 **SLI Specification:**
-An entry creation is *fast* if it completes in under **100ms**.
-Only successful (2xx) requests are considered for latency.
+An entry creation is *fast* if the average API response time is **< 40ms**.
+This measures only the API-side latency (time spent in the FastAPI backend + TiDB query), not the full end-user round-trip which also includes the frontend, cross-cloud network hops (GKE → VPN → EKS), and public internet.
 
 **SLI Implementation:**
+- Data source: Prometheus (via `prometheus_fastapi_instrumentator`).
+- The `http_request_duration_seconds` metric does not carry a `status` label, so all requests (successful and failed) are included in the average.
 
 ```promql
-sum(rate(http_request_duration_seconds_sum{handler="/items", method="POST", status="2xx"}[10m]))
-  / sum(rate(http_request_duration_seconds_count{handler="/items", method="POST", status="2xx"}[10m]))
+sum(rate(http_request_duration_seconds_sum{handler="/items", method="POST"}[10m]))
+  / sum(rate(http_request_duration_seconds_count{handler="/items", method="POST"}[10m]))
 ```
 
 **SLO:**
-Average entry creation time < **100ms** over 10-minute rolling windows.
+Average API response time < **40ms** over 10-minute rolling windows.
