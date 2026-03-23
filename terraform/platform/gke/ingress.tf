@@ -17,6 +17,7 @@ resource "helm_release" "traefik" {
       name  = "service.annotations.cloud\\.google\\.com/l4-rbs"
       value = "enabled"
     },
+    { name = "providers.kubernetesIngress.allowExternalNameServices", value = "true" },
   ]
   wait    = true
   timeout = 600

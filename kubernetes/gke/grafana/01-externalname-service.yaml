@@ -6,3 +6,6 @@ metadata:
 spec:
   type: ExternalName
   externalName: grafana.project-x
+  ports:
+    - port: 80
+      targetPort: 80
