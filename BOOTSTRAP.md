@@ -13,7 +13,7 @@ gcloud container clusters get-credentials cluster-g --zone us-central1-a --proje
 
 Install Rancher agent in EKS:
 ```bash
-curl -sf "https://rancher.34.172.165.232.nip.io/v3/import/x7fdhdg6pfvc2skkldk9dh65vpnfhqfbl2hvnhfw2cqtbc74gndwfk_c-wmz4x.yaml" | kubectl apply -f - --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
+curl -sf "https://rancher.34.27.42.13.nip.io/v3/import/6gdgqj74dtm9gn4dj2crcb96g6d7s6zm482vptn7tp4l7vzmxwxfv5_c-lhnds.yaml" | kubectl apply -f - --context arn:aws:eks:us-east-1:454371013564:cluster/cluster-a
 ```
 
 Install TiDB CRDs and Operator

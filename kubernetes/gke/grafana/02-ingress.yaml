@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: frontend-ingress
+  name: grafana-ingress
   namespace: agama
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
@@ -11,17 +11,16 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - "frontend.34.27.42.13.nip.io"
-      secretName: frontend-tls-secret
+        - "grafana.34.27.42.13.nip.io"
+      secretName: grafana-tls-secret
   rules:
-    - host: "frontend.34.27.42.13.nip.io"
+    - host: "grafana.34.27.42.13.nip.io"
       http:
         paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: frontend
-              port:
-                number: 80
-                
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: grafana-backend
+                port:
+                  number: 80

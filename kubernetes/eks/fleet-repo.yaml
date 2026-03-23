@@ -10,6 +10,7 @@ spec:
     - kubernetes/eks/storage
     - kubernetes/eks/tidb-cluster
     - kubernetes/eks/api
+    - kubernetes/eks/monitoring
   targets:
     - name: cluster-a
       clusterName: cluster-a

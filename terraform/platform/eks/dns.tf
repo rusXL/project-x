@@ -15,3 +15,11 @@ resource "aws_route53_record" "api" {
   ttl     = 60
   records = [data.kubernetes_service.traefik.status[0].load_balancer[0].ingress[0].hostname]
 }
+
+resource "aws_route53_record" "grafana" {
+  zone_id = var.aws_zone_id
+  name    = "grafana.project-x"
+  type    = "CNAME"
+  ttl     = 60
+  records = [data.kubernetes_service.traefik.status[0].load_balancer[0].ingress[0].hostname]
+}
