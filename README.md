@@ -1,11 +1,13 @@
 # TODO
 
-## Test
-- tidb allow api only
-- grafana updated dashboard
+## Bootstrap
+- push to github lb-ip change
 
 ## Security
 - restrict vpc firewall rules in infra for gcp and aws
+
+## Load
+- fake load service
 
 ## HA
 - pod resource requests, limits, hpa for api, more pods for tidb cluster

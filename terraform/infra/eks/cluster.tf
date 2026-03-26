@@ -83,3 +83,13 @@ resource "aws_eks_node_group" "node_group_a" {
     aws_iam_role_policy_attachment.eks_ecr_policy,
   ]
 }
+
+# VPC CNI addon with NetworkPolicy enforcement
+resource "aws_eks_addon" "vpc_cni" {
+  cluster_name = aws_eks_cluster.cluster_a.name
+  addon_name   = "vpc-cni"
+  configuration_values = jsonencode({
+    enableNetworkPolicy = "true"
+  })
+  depends_on = [aws_eks_node_group.node_group_a]
+}
