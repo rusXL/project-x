@@ -1,0 +1,10 @@
+resources:
+  - testrun.yaml
+
+configMapGenerator:
+  - name: k6-api-test
+    namespace: agama
+    files:
+      - api.test.js
+    options:
+      disableNameSuffixHash: true

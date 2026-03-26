@@ -1,0 +1,11 @@
+apiVersion: k6.io/v1alpha1
+kind: TestRun
+metadata:
+  name: api-loadtest
+  namespace: agama
+spec:
+  parallelism: 1
+  script:
+    configMap:
+      name: k6-api-test
+      file: api.test.js
