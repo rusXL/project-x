@@ -13,6 +13,8 @@ resource "helm_release" "kube_prometheus_stack" {
     { name = "grafana.sidecar.dashboards.searchNamespace", value = "ALL" },
     { name = "alertmanager.enabled", value = "false" },
     { name = "grafana.adminPassword", value = var.grafana_admin_password },
+    { name = "prometheus.prometheusSpec.enableRemoteWriteReceiver", value = "true" },
+    { name = "prometheus.prometheusSpec.enableFeatures[0]", value = "native-histograms" },
   ]
 
   wait    = true

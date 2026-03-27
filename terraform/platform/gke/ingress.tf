@@ -18,6 +18,8 @@ resource "helm_release" "traefik" {
       value = "enabled"
     },
     { name = "providers.kubernetesIngress.allowExternalNameServices", value = "true" },
+    { name = "ports.web.http.redirections.entryPoint.to", value = "websecure" },
+    { name = "ports.web.http.redirections.entryPoint.scheme", value = "https" },
   ]
   wait    = true
   timeout = 600
