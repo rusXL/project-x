@@ -27,3 +27,10 @@ spec:
       ports:
         - protocol: TCP
           port: 4000
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: tidb-admin
+      ports:
+        - protocol: TCP
+          port: 10080

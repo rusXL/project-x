@@ -16,10 +16,6 @@ LB_IP=$(terraform output -raw gke_lb_ip)
 sed -i "s/\"frontend\.[0-9.]*\.nip\.io\"/\"frontend.${LB_IP}.nip.io\"/" ../../kubernetes/gke/frontend/03-ingress.yaml
 sed -i "s/\"grafana\.[0-9.]*\.nip\.io\"/\"grafana.${LB_IP}.nip.io\"/" ../../kubernetes/gke/grafana/02-ingress.yaml
 
-git add ../../kubernetes/gke/frontend/03-ingress.yaml ../../kubernetes/gke/grafana/02-ingress.yaml
-git commit -m "chore: update LB IP to ${LB_IP} in ingress manifests"
-git push
-
 cd ../platform
 terraform init
 terraform apply -auto-approve
