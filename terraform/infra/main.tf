@@ -8,8 +8,9 @@ module "gke" {
   gcp_region      = var.gcp_region
   gcp_zone        = var.gcp_zone
   gcp_subnet_cidr = var.gcp_subnet_cidr
-  gcp_node_count  = var.gcp_node_count
-  aws_vpc_cidr    = var.aws_vpc_cidr
+  gcp_node_count   = var.gcp_node_count
+  gcp_machine_type = var.gcp_machine_type
+  aws_vpc_cidr     = var.aws_vpc_cidr
 }
 
 module "eks" {
@@ -21,6 +22,7 @@ module "eks" {
   aws_vpc_cidr      = var.aws_vpc_cidr
   aws_subnet_cidr   = var.aws_subnet_cidr
   aws_node_count    = var.aws_node_count
+  aws_instance_type = var.aws_instance_type
   gcp_vpc_cidr      = var.gcp_subnet_cidr
   gcp_pod_cidr      = module.gke.gke_pod_cidr
   aws_subnet_b_cidr = var.aws_subnet_b_cidr

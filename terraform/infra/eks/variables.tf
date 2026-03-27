@@ -20,6 +20,11 @@ variable "aws_node_count" {
   type        = number
 }
 
+variable "aws_instance_type" {
+  description = "EC2 instance type for EKS nodes."
+  type        = string
+}
+
 variable "aws_subnet_b_cidr" {
   description = "CIDR block for EKS subnet B."
   type        = string

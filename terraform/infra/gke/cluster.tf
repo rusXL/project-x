@@ -24,6 +24,6 @@ resource "google_container_node_pool" "node_pool_g" {
 
   node_config {
     preemptible  = false
-    machine_type = "e2-medium"
+    machine_type = var.gcp_machine_type
   }
 }

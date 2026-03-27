@@ -6,11 +6,22 @@ metadata:
 spec:
   cluster:
     name: basic
-  replicas: 1 # 2
+  replicas: 2
   template:
     metadata:
       annotations:
         author: pingcap
     spec:
       version: v8.5.2
-      
+      overlay:
+        pod:
+          spec:
+            containers:
+            - name: tidb
+              resources:
+                requests:
+                  cpu: "400m"
+                  memory: "400Mi"
+                limits:
+                  cpu: "750m"
+                  memory: "768Mi"

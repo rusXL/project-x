@@ -5,6 +5,11 @@ variable "gcp_node_count" {
   type        = number
 }
 
+variable "gcp_machine_type" {
+  description = "Machine type for GKE nodes."
+  type        = string
+}
+
 variable "gcp_region" {
   description = "GCP region."
   type        = string

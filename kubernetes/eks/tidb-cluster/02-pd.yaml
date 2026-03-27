@@ -6,7 +6,7 @@ metadata:
 spec:
   cluster:
     name: basic
-  replicas: 1 # 3
+  replicas: 3
   template:
     metadata:
       annotations:
@@ -19,4 +19,15 @@ spec:
         - type: data
         storage: 1Gi
         storageClassName: gp3
-        
+      overlay:
+        pod:
+          spec:
+            containers:
+            - name: pd
+              resources:
+                requests:
+                  cpu: "100m"
+                  memory: "64Mi"
+                limits:
+                  cpu: "200m"
+                  memory: "128Mi"

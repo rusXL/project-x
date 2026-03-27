@@ -19,6 +19,10 @@ variable "gcp_node_count" {
   description = "Node count for GKE cluster."
   type        = number
 }
+variable "gcp_machine_type" {
+  description = "Machine type for GKE nodes."
+  type        = string
+}
 
 # AWS
 variable "aws_region" {
@@ -48,6 +52,10 @@ variable "aws_zone_b" {
 variable "aws_node_count" {
   description = "Node count for EKS cluster."
   type        = number
+}
+variable "aws_instance_type" {
+  description = "EC2 instance type for EKS nodes."
+  type        = string
 }
 
 # VPN

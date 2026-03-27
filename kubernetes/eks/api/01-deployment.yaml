@@ -4,7 +4,7 @@ metadata:
   name: api
   namespace: agama
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: api
@@ -20,11 +20,29 @@ spec:
             - name: http
               containerPort: 8000
           env:
-            # TODO: Secret/ConfigMap later
             - name: DATABASE_URL
               value: "mysql+aiomysql://root:@tidb.db.svc.cluster.local:4000/agama"
             - name: ALLOWED_ORIGINS
               value: '["*"]'
             - name: APP_NAME
               value: "AGAMA"
-          # TODO: resources, probes
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            failureThreshold: 3

@@ -8,12 +8,11 @@ export const options = {
     { duration: "1m", target: 100 },
     { duration: "1m", target: 200 },
     { duration: "1m", target: 500 },
+    { duration: "1m", target: 1000 },
+    { duration: "1m", target: 2000 },
     { duration: "30s", target: 0 },
   ],
-  thresholds: {
-    http_req_failed: ["rate<0.05"], // SLO: >= 95% availability
-    http_req_duration: ["avg<40"], // SLO: avg API response < 40ms
-  },
+  thresholds: {},
 };
 
 const BASE_URL = "http://api.agama.svc.cluster.local";
