@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: rusxl/agama-frontend:e924a166deed02b71fca3cdbd5cebbab34add1b5
+          image: rusxl/agama-frontend:1b838373e4cd1448e5c7cb7c4f194b5d5316a3a2
           ports:
             - name: http
               containerPort: 3000
