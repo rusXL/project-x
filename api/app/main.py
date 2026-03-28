@@ -6,14 +6,9 @@ from sqlalchemy import select
 from prometheus_fastapi_instrumentator import Instrumentator
 
 from app.config import settings
-from app.database import Base, engine, SessionLocal
+from app.database import SessionLocal
 from app.models.item import Item
 from app.routers import items
-
-
-async def _create_tables() -> None:
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
 
 
 async def _seed_demo_items() -> None:
@@ -33,7 +28,6 @@ async def _seed_demo_items() -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await _create_tables()
     await _seed_demo_items()
     yield
 

@@ -37,7 +37,8 @@
       "Bash(GKE_CTX=\"gke_cloud-computing-476715_us-central1-a_cluster-g\")",
       "Bash(cat /home/jus/projects/project-x/kubernetes/eks/loadtest/*.yaml)",
       "WebFetch(domain:grafana.com)",
-      "Bash(terraform validate:*)"
+      "Bash(terraform validate:*)",
+      "Bash(gh api:*)"
     ]
   }
 }

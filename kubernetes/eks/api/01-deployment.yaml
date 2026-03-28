@@ -4,7 +4,7 @@ metadata:
   name: api
   namespace: agama
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: api
@@ -13,6 +13,15 @@ spec:
       labels:
         app: api
     spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: api
+              topologyKey: kubernetes.io/hostname
       containers:
         - name: api
           image: rusxl/agama-api:d542bbcbaf209aa321e1c7c9ed76f6d0771cdaa1

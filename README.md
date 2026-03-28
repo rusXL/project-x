@@ -2,6 +2,8 @@
 - test new resource definitions, number of nodes
 - perform load tests until failure, see which pods fail
 - target: withstand 1000 VUs and adhere to SLO
+- TIDB moniroting (https://docs.pingcap.com/tidb-in-kubernetes/dev/monitor-a-tidb-cluster/#configure-monitoring-dashboards)
+- scale api pods based on latency?
 
 ## Loadtest
 EKS_CTX="arn:aws:eks:us-east-1:454371013564:cluster/cluster-a"

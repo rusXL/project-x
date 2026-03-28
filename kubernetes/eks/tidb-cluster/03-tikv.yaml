@@ -31,3 +31,12 @@ spec:
                 requests:
                   cpu: "500m"
                   memory: "1280Mi"
+            affinity:
+              podAntiAffinity:
+                preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  podAffinityTerm:
+                    labelSelector:
+                      matchLabels:
+                        pingcap.com/component: tikv
+                    topologyKey: kubernetes.io/hostname
