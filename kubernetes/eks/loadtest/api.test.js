@@ -31,9 +31,11 @@ export default function () {
 
   const item = createRes.json();
 
-  // list
-  const listRes = http.get(`${BASE_URL}/items`);
-  check(listRes, { "list 200": (r) => r.status === 200 });
+  // list (once every 10 iterations, simulates page refresh)
+  if (__ITER % 10 === 0) {
+    const listRes = http.get(`${BASE_URL}/items`);
+    check(listRes, { "list 200": (r) => r.status === 200 });
+  }
 
   // toggle
   if (item && item.id) {

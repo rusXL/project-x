@@ -2,7 +2,7 @@ from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException, Response
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, func
+from sqlalchemy import select, text
 
 from app.config import settings
 from app.dependencies import get_db
@@ -25,8 +25,10 @@ async def create_item(payload: ItemCreate, db: AsyncSession = Depends(get_db)):
             status_code=400, detail="Value exceeds maximum length of 255 characters"
         )
 
-    result = await db.execute(select(func.count(Item.id)).limit(settings.max_items + 1))
-    count = result.scalar()
+    result = await db.execute(
+        text("SELECT TABLE_ROWS FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='agama' AND TABLE_NAME='items'")
+    )
+    count = result.scalar() or 0
     if count >= settings.max_items:
         raise HTTPException(
             status_code=400,
