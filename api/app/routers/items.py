@@ -33,13 +33,6 @@ async def create_item(payload: ItemCreate, db: AsyncSession = Depends(get_db)):
             detail=f"Maximum number of items ({settings.max_items:,}) reached",
         )
 
-    result = await db.execute(select(Item).where(Item.value == payload.value))
-    existing = result.scalars().first()
-    if existing:
-        raise HTTPException(
-            status_code=400, detail="An item with this value already exists"
-        )
-
     item = Item(value=payload.value)
     db.add(item)
     await db.commit()

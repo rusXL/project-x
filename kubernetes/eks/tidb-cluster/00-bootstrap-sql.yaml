@@ -11,8 +11,7 @@ data:
       `id` BIGINT NOT NULL AUTO_RANDOM(3),
       `value` VARCHAR(255) NOT NULL,
       `state` INT NOT NULL DEFAULT 0,
-      PRIMARY KEY (`id`) CLUSTERED,
-      UNIQUE KEY `ix_value` (`value`)
+      PRIMARY KEY (`id`) CLUSTERED
     ) PRE_SPLIT_REGIONS = 3;
 
     ALTER TABLE `agama`.`items` ATTRIBUTES 'merge_option=deny';
