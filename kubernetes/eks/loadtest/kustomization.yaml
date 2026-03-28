@@ -3,7 +3,7 @@ resources:
 
 configMapGenerator:
   - name: k6-api-test
-    namespace: agama
+    namespace: loadtest
     files:
       - api.test.js
     options:
