@@ -34,7 +34,7 @@ export async function addItem(value: string) {
   return res.json();
 }
 
-export async function toggleItem(id: number) {
+export async function toggleItem(id: string) {
   const url = getApiUrl();
   const res = await fetch(`${url}/items/${id}/toggle`, { method: "POST" });
   if (!res.ok) throw new Error("Could not update item.");
@@ -42,7 +42,7 @@ export async function toggleItem(id: number) {
   return res.json();
 }
 
-export async function deleteItem(id: number) {
+export async function deleteItem(id: string) {
   const url = getApiUrl();
   const res = await fetch(`${url}/items/${id}`, { method: "DELETE" });
   if (!res.ok && res.status !== 204) throw new Error("Could not delete item.");

@@ -1,6 +1,8 @@
 from enum import IntEnum
 
-from pydantic import BaseModel, ConfigDict
+from typing import Annotated
+
+from pydantic import BaseModel, ConfigDict, PlainSerializer
 
 
 class ItemState(IntEnum):
@@ -12,8 +14,11 @@ class ItemCreate(BaseModel):
     value: str
 
 
+StrInt = Annotated[int, PlainSerializer(lambda v: str(v), return_type=str)]
+
+
 class ItemResponse(BaseModel):
-    id: int
+    id: StrInt
     value: str
     state: ItemState
 

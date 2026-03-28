@@ -8,7 +8,7 @@ import { Trash2, WifiOff, Loader2 } from "lucide-react";
 import { addItem, toggleItem, deleteItem } from "./actions";
 
 type Item = {
-  id: number;
+  id: string;
   value: string;
   state: 0 | 1;
 };
@@ -41,7 +41,7 @@ export default function ItemList({
     }
   };
 
-  const toggle = async (id: number) => {
+  const toggle = async (id: string) => {
     setActionError(null);
     try {
       const updated = await toggleItem(id);
@@ -51,7 +51,7 @@ export default function ItemList({
     }
   };
 
-  const remove = async (id: number) => {
+  const remove = async (id: string) => {
     setActionError(null);
     try {
       await deleteItem(id);
@@ -60,10 +60,6 @@ export default function ItemList({
       setActionError("Something went wrong.");
     }
   };
-
-  const sorted = [...items].sort((a, b) =>
-    a.state !== b.state ? a.state - b.state : a.id - b.id,
-  );
 
   return (
     <>
@@ -107,14 +103,14 @@ export default function ItemList({
         )}
 
         {/* Empty state */}
-        {!loadError && sorted.length === 0 && (
+        {!loadError && items.length === 0 && (
           <p className="text-sm text-muted-foreground text-center py-6">
             No items yet. Add one above.
           </p>
         )}
 
         {!loadError &&
-          sorted.map((item) => (
+          items.map((item) => (
             <div
               key={item.id}
               className={cn(
