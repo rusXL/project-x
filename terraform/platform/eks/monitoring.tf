@@ -9,6 +9,7 @@ resource "helm_release" "kube_prometheus_stack" {
 
   set = [
     { name = "prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues", value = "false" },
+    { name = "prometheus.prometheusSpec.podMonitorSelectorNilUsesHelmValues", value = "false" },
     { name = "grafana.sidecar.dashboards.enabled", value = "true" },
     { name = "grafana.sidecar.dashboards.searchNamespace", value = "ALL" },
     { name = "alertmanager.enabled", value = "false" },
