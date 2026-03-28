@@ -15,34 +15,10 @@ configMapGenerator:
       disableNameSuffixHash: true
       labels:
         grafana_dashboard: "1"
-  - name: tidb-overview-dashboard
+  - name: tidb-cluster-dashboard
     namespace: monitoring
     files:
-      - tidb/tidb-overview.json
-    options:
-      disableNameSuffixHash: true
-      labels:
-        grafana_dashboard: "1"
-  - name: tidb-summary-dashboard
-    namespace: monitoring
-    files:
-      - tidb/tidb-summary.json
-    options:
-      disableNameSuffixHash: true
-      labels:
-        grafana_dashboard: "1"
-  - name: tikv-summary-dashboard
-    namespace: monitoring
-    files:
-      - tidb/tikv-summary.json
-    options:
-      disableNameSuffixHash: true
-      labels:
-        grafana_dashboard: "1"
-  - name: pd-dashboard
-    namespace: monitoring
-    files:
-      - tidb/tidb-pd.json
+      - tidb-cluster.json
     options:
       disableNameSuffixHash: true
       labels:
