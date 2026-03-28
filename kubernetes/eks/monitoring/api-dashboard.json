@@ -121,7 +121,7 @@
       "datasource": { "type": "prometheus", "uid": "prometheus" },
       "targets": [
         {
-          "expr": "100 * sum(rate(http_requests_total{handler=\"/items\", method=\"GET\", status=~\"2xx|3xx\"}[10m])) / sum(rate(http_requests_total{handler=\"/items\", method=\"GET\"}[10m]))",
+          "expr": "100 * sum(rate(http_requests_total{handler=\"/items\", method=\"GET\", status!~\"5xx\"}[10m])) / sum(rate(http_requests_total{handler=\"/items\", method=\"GET\"}[10m]))",
           "legendFormat": "availability",
           "refId": "A"
         }
@@ -172,7 +172,7 @@
       "datasource": { "type": "prometheus", "uid": "prometheus" },
       "targets": [
         {
-          "expr": "100 * sum(rate(http_requests_total{handler=\"/items\", method=\"POST\", status=~\"2xx|3xx\"}[10m])) / sum(rate(http_requests_total{handler=\"/items\", method=\"POST\"}[10m]))",
+          "expr": "100 * sum(rate(http_requests_total{handler=\"/items\", method=\"POST\", status!~\"5xx\"}[10m])) / sum(rate(http_requests_total{handler=\"/items\", method=\"POST\"}[10m]))",
           "legendFormat": "availability",
           "refId": "A"
         }
@@ -329,7 +329,7 @@
       "datasource": { "type": "prometheus", "uid": "prometheus" },
       "targets": [
         {
-          "expr": "100 * sum(rate(http_requests_total{handler=\"/items/{item_id}/toggle\", method=\"POST\", status=~\"2xx|3xx\"}[10m])) / sum(rate(http_requests_total{handler=\"/items/{item_id}/toggle\", method=\"POST\"}[10m]))",
+          "expr": "100 * sum(rate(http_requests_total{handler=\"/items/{item_id}/toggle\", method=\"POST\", status!~\"5xx\"}[10m])) / sum(rate(http_requests_total{handler=\"/items/{item_id}/toggle\", method=\"POST\"}[10m]))",
           "legendFormat": "availability",
           "refId": "A"
         }
@@ -380,7 +380,7 @@
       "datasource": { "type": "prometheus", "uid": "prometheus" },
       "targets": [
         {
-          "expr": "100 * sum(rate(http_requests_total{handler=\"/items/{item_id}\", method=\"DELETE\", status=~\"2xx|3xx\"}[10m])) / sum(rate(http_requests_total{handler=\"/items/{item_id}\", method=\"DELETE\"}[10m]))",
+          "expr": "100 * sum(rate(http_requests_total{handler=\"/items/{item_id}\", method=\"DELETE\", status!~\"5xx\"}[10m])) / sum(rate(http_requests_total{handler=\"/items/{item_id}\", method=\"DELETE\"}[10m]))",
           "legendFormat": "availability",
           "refId": "A"
         }

@@ -16,7 +16,8 @@ User visits the main Agama page to view the dashboard (`GET /items`).
 ### SLI Type: Availability
 
 **SLI Specification:**
-A request is considered *successful* if it results in an HTTP **2xx** or **3xx** status code.
+A request is considered *successful* if it does **not** result in an HTTP **5xx** status code.
+Client errors (4xx) are expected behaviour (e.g. duplicate items, not-found) and do not count against availability.
 
 **SLI Implementation:**
 - Data source: Prometheus (via `prometheus_fastapi_instrumentator`).
@@ -24,7 +25,7 @@ A request is considered *successful* if it results in an HTTP **2xx** or **3xx**
 - Measure: ratio of successful requests (2xx/3xx) to total requests in a 10-minute window.
 
 ```promql
-100 * sum(rate(http_requests_total{handler="/items", method="GET", status=~"2xx|3xx"}[10m]))
+100 * sum(rate(http_requests_total{handler="/items", method="GET", status!~"5xx"}[10m]))
     / sum(rate(http_requests_total{handler="/items", method="GET"}[10m]))
 ```
 
@@ -57,12 +58,13 @@ User submits a new entry via `POST /items`.
 ### SLI Type: Availability
 
 **SLI Specification:**
-A *successful* submission returns a **2xx** or **3xx** HTTP status.
+A *successful* submission returns any non-**5xx** HTTP status.
+Client errors (4xx) such as duplicate values or max-items-reached are expected and do not count against availability.
 
 **SLI Implementation:**
 
 ```promql
-100 * sum(rate(http_requests_total{handler="/items", method="POST", status=~"2xx|3xx"}[10m]))
+100 * sum(rate(http_requests_total{handler="/items", method="POST", status!~"5xx"}[10m]))
     / sum(rate(http_requests_total{handler="/items", method="POST"}[10m]))
 ```
 
@@ -95,12 +97,13 @@ User toggles the state of an existing entry via `POST /items/{item_id}/toggle`.
 ### SLI Type: Availability
 
 **SLI Specification:**
-A *successful* toggle returns a **2xx** or **3xx** HTTP status.
+A *successful* toggle returns any non-**5xx** HTTP status.
+Client errors (4xx) such as item-not-found are expected and do not count against availability.
 
 **SLI Implementation:**
 
 ```promql
-100 * sum(rate(http_requests_total{handler="/items/{item_id}/toggle", method="POST", status=~"2xx|3xx"}[10m]))
+100 * sum(rate(http_requests_total{handler="/items/{item_id}/toggle", method="POST", status!~"5xx"}[10m]))
     / sum(rate(http_requests_total{handler="/items/{item_id}/toggle", method="POST"}[10m]))
 ```
 
@@ -133,12 +136,13 @@ User deletes an existing entry via `DELETE /items/{item_id}`.
 ### SLI Type: Availability
 
 **SLI Specification:**
-A *successful* deletion returns a **2xx** or **3xx** HTTP status.
+A *successful* deletion returns any non-**5xx** HTTP status.
+Client errors (4xx) such as item-not-found are expected and do not count against availability.
 
 **SLI Implementation:**
 
 ```promql
-100 * sum(rate(http_requests_total{handler="/items/{item_id}", method="DELETE", status=~"2xx|3xx"}[10m]))
+100 * sum(rate(http_requests_total{handler="/items/{item_id}", method="DELETE", status!~"5xx"}[10m]))
     / sum(rate(http_requests_total{handler="/items/{item_id}", method="DELETE"}[10m]))
 ```
 
