@@ -15,4 +15,6 @@ data:
       UNIQUE KEY `ix_value` (`value`)
     ) PRE_SPLIT_REGIONS = 3;
 
+    ALTER TABLE `agama`.`items` ATTRIBUTES 'merge_option=deny';
+
     SET GLOBAL tidb_replica_read = 'leader-and-follower';

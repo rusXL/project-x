@@ -38,7 +38,9 @@
       "Bash(cat /home/jus/projects/project-x/kubernetes/eks/loadtest/*.yaml)",
       "WebFetch(domain:grafana.com)",
       "Bash(terraform validate:*)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Bash(ls:*)",
+      "Bash(terraform init:*)"
     ]
   }
 }
