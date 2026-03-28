@@ -23,7 +23,7 @@ configMapGenerator:
   - name: tidb-overview-dashboard
     namespace: monitoring
     files:
-      - dashboards/tidb/overview.json
+      - dashboards/tidb/tidb-overview.json
     options:
       disableNameSuffixHash: true
       labels:
@@ -31,7 +31,7 @@ configMapGenerator:
   - name: tidb-summary-dashboard
     namespace: monitoring
     files:
-      - dashboards/tidb/tidb_summary.json
+      - dashboards/tidb/tidb-summary.json
     options:
       disableNameSuffixHash: true
       labels:
@@ -39,7 +39,7 @@ configMapGenerator:
   - name: tikv-summary-dashboard
     namespace: monitoring
     files:
-      - dashboards/tidb/tikv_summary.json
+      - dashboards/tidb/tikv-summary.json
     options:
       disableNameSuffixHash: true
       labels:
@@ -47,7 +47,7 @@ configMapGenerator:
   - name: pd-dashboard
     namespace: monitoring
     files:
-      - dashboards/tidb/pd.json
+      - dashboards/tidb/tidb-pd.json
     options:
       disableNameSuffixHash: true
       labels:

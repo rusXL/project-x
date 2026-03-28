@@ -1,3 +1,4 @@
 name: monitoring
 defaultNamespace: monitoring
-kustomize: {}
+kustomize:
+  dir: .
