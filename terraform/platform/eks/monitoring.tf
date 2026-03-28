@@ -16,6 +16,14 @@ resource "helm_release" "kube_prometheus_stack" {
     { name = "grafana.adminPassword", value = var.grafana_admin_password },
     { name = "prometheus.prometheusSpec.enableRemoteWriteReceiver", value = "true" },
     { name = "prometheus.prometheusSpec.enableFeatures[0]", value = "native-histograms" },
+    { name = "prometheus.prometheusSpec.resources.requests.cpu", value = "200m" },
+    { name = "prometheus.prometheusSpec.resources.requests.memory", value = "512Mi" },
+    { name = "prometheus.prometheusSpec.resources.limits.cpu", value = "1" },
+    { name = "prometheus.prometheusSpec.resources.limits.memory", value = "1536Mi" },
+    { name = "grafana.resources.requests.cpu", value = "100m" },
+    { name = "grafana.resources.requests.memory", value = "128Mi" },
+    { name = "grafana.resources.limits.cpu", value = "500m" },
+    { name = "grafana.resources.limits.memory", value = "512Mi" },
   ]
 
   wait    = true

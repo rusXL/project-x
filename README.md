@@ -6,11 +6,7 @@
 - scale api pods based on latency?
 
 ## Loadtest
-EKS_CTX="arn:aws:eks:us-east-1:454371013564:cluster/cluster-a"
-kubectl apply -k kubernetes/eks/loadtest/ --context "$EKS_CTX"
-
-kubectl delete testrun api-loadtest -n agama --context "$EKS_CTX"
-kubectl apply -k kubernetes/eks/loadtest/ --context "$EKS_CTX"
+cd scripts && ./loadtest.sh
 
 ## HA
 - pod resource requests, limits, hpa for api, more pods for tidb cluster
