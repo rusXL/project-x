@@ -26,10 +26,10 @@ spec:
             - name: tikv
               resources:
                 limits:
-                  cpu: "1"
+                  cpu: "2"
                   memory: "2560Mi"
                 requests:
-                  cpu: "500m"
+                  cpu: "1"
                   memory: "1280Mi"
             affinity:
               podAntiAffinity:
