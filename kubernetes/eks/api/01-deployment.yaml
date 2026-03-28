@@ -24,7 +24,7 @@ spec:
               topologyKey: kubernetes.io/hostname
       containers:
         - name: api
-          image: rusxl/agama-api:e93a284da34e3fe664d2b4517f5c3a808c991786
+          image: rusxl/agama-api:1b838373e4cd1448e5c7cb7c4f194b5d5316a3a2
           ports:
             - name: http
               containerPort: 8000
