@@ -17,6 +17,4 @@ kubectl apply -k kubernetes/eks/loadtest/ --context "$EKS_CTX"
 
 
 ## Future TODO
-- explore other non-functional test types
 - restrict vpc firewall rules in infra for gcp and aws
-
