@@ -20,8 +20,8 @@ spec:
             - name: tidb
               resources:
                 requests:
-                  cpu: "400m"
-                  memory: "400Mi"
+                  cpu: "250m"
+                  memory: "256Mi"
                 limits:
                   cpu: "750m"
                   memory: "768Mi"

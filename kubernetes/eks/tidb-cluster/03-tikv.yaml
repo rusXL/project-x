@@ -29,8 +29,8 @@ spec:
                   cpu: "2"
                   memory: "2560Mi"
                 requests:
-                  cpu: "1"
-                  memory: "1280Mi"
+                  cpu: "500m"
+                  memory: "1536Mi"
             affinity:
               podAntiAffinity:
                 preferredDuringSchedulingIgnoredDuringExecution:
