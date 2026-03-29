@@ -40,7 +40,8 @@
       "Bash(terraform validate:*)",
       "Bash(gh api:*)",
       "Bash(ls:*)",
-      "Bash(terraform init:*)"
+      "Bash(terraform init:*)",
+      "Bash(xargs cat:*)"
     ]
   }
 }
