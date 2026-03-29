@@ -8,7 +8,7 @@ spec:
   branch: main
   paths:
     - kubernetes/eks/storage
-    - kubernetes/eks/mysql
+    - kubernetes/eks/tidb-cluster
     - kubernetes/eks/api
     - kubernetes/eks/monitoring
   targets:
