@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-bootstrap
+  namespace: db
+data:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS `agama`;
+
+    CREATE TABLE IF NOT EXISTS `agama`.`items` (
+      `id` BIGINT NOT NULL AUTO_INCREMENT,
+      `value` VARCHAR(255) NOT NULL,
+      `state` INT NOT NULL DEFAULT 0,
+      PRIMARY KEY (`id`)
+    );
