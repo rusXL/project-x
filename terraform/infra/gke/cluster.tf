@@ -4,6 +4,7 @@ resource "google_container_cluster" "cluster_g" {
   name     = "cluster-g"
   location = var.gcp_zone
 
+  min_master_version       = "1.34"
   remove_default_node_pool = true
   initial_node_count       = 1
   deletion_protection      = false
