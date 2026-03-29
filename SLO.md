@@ -44,7 +44,7 @@ sum(rate(http_request_duration_seconds_sum{handler="/items", method="GET"}[10m])
 ```
 
 **SLO:**
-Average API response time < **40ms** over 10-minute rolling windows.
+Average API response time < **100ms** over 10-minute rolling windows.
 
 ---
 
@@ -83,7 +83,7 @@ sum(rate(http_request_duration_seconds_sum{handler="/items", method="POST"}[10m]
 ```
 
 **SLO:**
-Average API response time < **40ms** over 10-minute rolling windows.
+Average API response time < **100ms** over 10-minute rolling windows.
 
 ---
 
@@ -122,7 +122,7 @@ sum(rate(http_request_duration_seconds_sum{handler="/items/{item_id}/toggle", me
 ```
 
 **SLO:**
-Average API response time < **40ms** over 10-minute rolling windows.
+Average API response time < **100ms** over 10-minute rolling windows.
 
 ---
 
@@ -161,4 +161,4 @@ sum(rate(http_request_duration_seconds_sum{handler="/items/{item_id}", method="D
 ```
 
 **SLO:**
-Average API response time < **40ms** over 10-minute rolling windows.
+Average API response time < **100ms** over 10-minute rolling windows.
