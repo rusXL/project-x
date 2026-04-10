@@ -11,10 +11,10 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - "grafana.35.224.11.115.nip.io"
+        - "grafana.34.48.110.4.nip.io"
       secretName: grafana-tls-secret
   rules:
-    - host: "grafana.35.224.11.115.nip.io"
+    - host: "grafana.34.48.110.4.nip.io"
       http:
         paths:
           - path: /
