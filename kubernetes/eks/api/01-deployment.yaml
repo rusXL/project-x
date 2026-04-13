@@ -30,7 +30,7 @@ spec:
               containerPort: 8000
           env:
             - name: DATABASE_URL
-              value: "mysql+aiomysql://root:@tidb.db.svc.cluster.local:4000/agama"
+              value: mysql+aiomysql://root:@mysql.db.svc.cluster.local:3306/agama # "mysql+aiomysql://root:@tidb.db.svc.cluster.local:4000/agama"
             - name: ALLOWED_ORIGINS
               value: '["*"]'
             - name: APP_NAME
