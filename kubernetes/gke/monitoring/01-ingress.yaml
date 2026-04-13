@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`grafana.34.48.110.4.nip.io`)
+    - match: Host(`grafana.34.21.100.141.nip.io`)
       kind: Rule
       services:
         - name: kube-prometheus-stack-grafana
