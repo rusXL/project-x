@@ -2,4 +2,3 @@ resources:
   - 01-servicemonitor-api.yaml
   - 02-ingress.yaml
   - 03-podmonitor-tidb.yaml
-  - dashboards

@@ -1,0 +1,11 @@
+resources:
+  - namespace.yaml
+  - testrun.yaml
+
+configMapGenerator:
+  - name: k6-latency-test
+    namespace: load-test
+    files:
+      - latency.test.js
+    options:
+      disableNameSuffixHash: true

@@ -11,8 +11,3 @@ variable "rancher_token" {
 variable "aws_zone_id" {
   type = string
 }
-
-variable "grafana_admin_password" {
-  type      = string
-  sensitive = true
-}

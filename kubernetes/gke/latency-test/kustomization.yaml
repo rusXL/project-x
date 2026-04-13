@@ -1,0 +1,14 @@
+resources:
+  - ../../latency-test/base
+
+patches:
+  - target:
+      kind: TestRun
+      name: latency-test
+    patch: |
+      - op: replace
+        path: /spec/runner/env/2/value
+        value: "gke"
+      - op: replace
+        path: /spec/runner/env/3/value
+        value: "http://api.project-x"

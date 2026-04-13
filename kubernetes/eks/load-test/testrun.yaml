@@ -1,8 +1,8 @@
 apiVersion: k6.io/v1alpha1
 kind: TestRun
 metadata:
-  name: api-loadtest
-  namespace: loadtest
+  name: api-load-test
+  namespace: load-test
 spec:
   parallelism: 1
   arguments: --out experimental-prometheus-rw

@@ -14,7 +14,7 @@ terraform apply -auto-approve
 # update LB IP in ingress manifests
 LB_IP=$(terraform output -raw gke_lb_ip)
 sed -i "s/\"frontend\.[0-9.]*\.nip\.io\"/\"frontend.${LB_IP}.nip.io\"/" ../../kubernetes/gke/frontend/03-ingress.yaml
-sed -i "s/\"grafana\.[0-9.]*\.nip\.io\"/\"grafana.${LB_IP}.nip.io\"/" ../../kubernetes/gke/grafana/02-ingress.yaml
+sed -i "s/grafana\.[0-9.]*\.nip\.io/grafana.${LB_IP}.nip.io/" ../../kubernetes/gke/monitoring/01-ingress.yaml
 
 cd ../platform
 terraform init
@@ -26,10 +26,10 @@ aws eks update-kubeconfig --name cluster-a --region us-east-1
 gcloud container clusters get-credentials cluster-g --zone us-east4-a --project cloud-computing-476715
 
 # tidb crds + operator
-# kubectl apply -f https://github.com/pingcap/tidb-operator/releases/download/v2.0.0/tidb-operator.crds.yaml \
-#   --server-side --context "$EKS_CTX"
-# kubectl apply -f https://github.com/pingcap/tidb-operator/releases/download/v2.0.0/tidb-operator.yaml \
-#   --server-side --context "$EKS_CTX"
+kubectl apply -f https://github.com/pingcap/tidb-operator/releases/download/v2.0.0/tidb-operator.crds.yaml \
+  --server-side --context "$EKS_CTX"
+kubectl apply -f https://github.com/pingcap/tidb-operator/releases/download/v2.0.0/tidb-operator.yaml \
+  --server-side --context "$EKS_CTX"
 
 # rancher agent on EKS
 MANIFEST_URL=$(cd terraform/platform && terraform output -raw eks_registration_manifest)
@@ -43,3 +43,4 @@ kubectl apply \
 
 # k6 operator
 curl https://raw.githubusercontent.com/grafana/k6-operator/main/bundle.yaml | kubectl apply -f - --context "$EKS_CTX"
+curl https://raw.githubusercontent.com/grafana/k6-operator/main/bundle.yaml | kubectl apply -f - --context "$GKE_CTX"

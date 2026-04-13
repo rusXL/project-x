@@ -15,3 +15,9 @@ variable "gke_lb_ip" {
   description = "GKE load balancer IP."
   type        = string
 }
+
+variable "grafana_admin_password" {
+  description = "Grafana admin password."
+  type        = string
+  sensitive   = true
+}

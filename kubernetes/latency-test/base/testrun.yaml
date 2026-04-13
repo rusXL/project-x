@@ -1,0 +1,22 @@
+apiVersion: k6.io/v1alpha1
+kind: TestRun
+metadata:
+  name: latency-test
+  namespace: load-test
+spec:
+  parallelism: 1
+  arguments: --out experimental-prometheus-rw
+  runner:
+    env:
+      - name: K6_PROMETHEUS_RW_SERVER_URL
+        value: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090/api/v1/write
+      - name: K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM
+        value: "true"
+      - name: CLUSTER
+        value: "eks"
+      - name: BASE_URL
+        value: "http://api.agama.svc.cluster.local"
+  script:
+    configMap:
+      name: k6-latency-test
+      file: latency.test.js

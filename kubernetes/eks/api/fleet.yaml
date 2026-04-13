@@ -1,5 +1,5 @@
 name: api
 defaultNamespace: agama
 dependsOn:
-  - name: mysql # tidb-cluster
+  - name: tidb-cluster # mysql
   

@@ -4,7 +4,7 @@ resources:
 
 configMapGenerator:
   - name: k6-api-test
-    namespace: loadtest
+    namespace: load-test
     files:
       - api.test.js
     options:

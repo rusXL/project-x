@@ -16,9 +16,9 @@ resource "aws_route53_record" "api" {
   records = [data.kubernetes_service.traefik.status[0].load_balancer[0].ingress[0].hostname]
 }
 
-resource "aws_route53_record" "grafana" {
+resource "aws_route53_record" "prometheus" {
   zone_id = var.aws_zone_id
-  name    = "grafana.project-x"
+  name    = "prometheus.project-x"
   type    = "CNAME"
   ttl     = 60
   records = [data.kubernetes_service.traefik.status[0].load_balancer[0].ingress[0].hostname]
