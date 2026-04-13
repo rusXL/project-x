@@ -1,6 +1,1 @@
-## TODO
-- test firewall rules
-- loadtest target: 1000 RPS + SLO
-- calculate availability of the system with respect to stated SLO
-- k6 pods with loadtest must also be tested on GKE cluster
-- section 6 of thesis
+This thesis investigates the design, implementation, and evaluation of a hybrid multi-cluster Kubernetes platform spanning Google Cloud Platform and a simulated on-premise environment built on Amazon Web Services. The system bridges public cloud services and on-premise infrastructure through a high-availability IPsec/BGP VPN, declarative Infrastructure as Code provisioning with Terraform, and GitOps-based continuous delivery with Rancher Fleet. A horizontally scalable FastAPI application backed by a distributed TiDB cluster serves as the workload, enabling measurement of Service Level Objectives under realistic conditions. The thesis covers theoretical foundations of hybrid and multicloud computing, enterprise drivers, requirements, technology alternatives, full system architecture structured by application and infrastructure tiers, the DevOps lifecycle, and observability. Load testing is conducted to evaluate the system’s behavior under stress conditions. Latency tests quantify the performance overhead introduced by operating across a distributed, multi-cluster environment.
