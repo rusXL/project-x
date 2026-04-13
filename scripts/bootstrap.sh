@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 EKS_CTX="arn:aws:eks:us-east-1:454371013564:cluster/cluster-a"
-GKE_CTX="gke_cloud-computing-476715_us-east4-a_cluster-g"
+GKE_CTX="gke_cloud-computing-476715_us-east4-b_cluster-g"
 
 # infra
 cd terraform/infra
@@ -23,7 +23,7 @@ cd ../..
 
 # kubeconfig
 aws eks update-kubeconfig --name cluster-a --region us-east-1
-gcloud container clusters get-credentials cluster-g --zone us-east4-a --project cloud-computing-476715
+gcloud container clusters get-credentials cluster-g --zone us-east4-b --project cloud-computing-476715
 
 # tidb crds + operator
 kubectl apply -f https://github.com/pingcap/tidb-operator/releases/download/v2.0.0/tidb-operator.crds.yaml \
