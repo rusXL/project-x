@@ -47,7 +47,7 @@
         "builtIn": 1,
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "${DS_PROMETHEUS}"
         },
         "enable": true,
         "hide": true,
@@ -84,7 +84,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {},
@@ -272,7 +272,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {},
@@ -478,7 +478,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "format": "none",
           "gauge": {
@@ -569,7 +569,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": null,
           "editable": true,
@@ -656,7 +656,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "editable": true,
@@ -743,7 +743,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "format": "none",
           "gauge": {
@@ -826,7 +826,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "format": "none",
           "gauge": {
@@ -908,7 +908,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editable": true,
           "error": false,
@@ -1017,7 +1017,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {},
@@ -1120,7 +1120,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {},
@@ -1231,7 +1231,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editable": true,
           "error": false,
@@ -1332,7 +1332,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 1,
           "gridPos": {
@@ -1436,7 +1436,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 1,
           "gridPos": {
@@ -1535,7 +1535,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 0,
           "gridPos": {
@@ -1628,7 +1628,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 0,
           "fill": 0,
@@ -1722,7 +1722,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 0,
           "gridPos": {
@@ -1817,7 +1817,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 0,
           "gridPos": {
@@ -1926,7 +1926,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editable": true,
           "error": false,
@@ -2027,7 +2027,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 1,
           "gridPos": {
@@ -2140,7 +2140,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 0,
           "gridPos": {
@@ -2233,7 +2233,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 0,
           "gridPos": {
@@ -2325,7 +2325,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editable": true,
           "error": false,
@@ -2434,7 +2434,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 0,
           "gridPos": {
@@ -2543,7 +2543,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 1,
           "gridPos": {
@@ -2631,7 +2631,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 1,
           "gridPos": {
@@ -2733,7 +2733,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 1,
           "gridPos": {
@@ -2826,7 +2826,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 1,
           "gridPos": {
@@ -2920,7 +2920,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 1,
           "gridPos": {
@@ -3018,7 +3018,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "description": "The duration of a client starting to wait for the TS until received the TS result.",
           "fill": 1,
@@ -3126,7 +3126,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 2,
           "fill": 0,
@@ -3221,7 +3221,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 1,
           "gridPos": {
@@ -3315,7 +3315,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": null,
           "editable": true,
@@ -3414,7 +3414,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fill": 1,
           "gridPos": {
@@ -3523,7 +3523,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "editable": true,
@@ -3644,7 +3644,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "editable": true,
@@ -3750,7 +3750,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "fieldConfig": {
@@ -3851,7 +3851,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {},
@@ -3951,7 +3951,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "fieldConfig": {
@@ -4053,7 +4053,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "fieldConfig": {
@@ -4154,7 +4154,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "editable": true,
@@ -4264,7 +4264,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "editable": true,
@@ -4375,7 +4375,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "fieldConfig": {
@@ -4477,7 +4477,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "fieldConfig": {
@@ -4581,7 +4581,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 5,
           "fieldConfig": {
@@ -4702,7 +4702,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "fieldConfig": {
@@ -4800,7 +4800,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "fieldConfig": {
@@ -4912,7 +4912,7 @@
           "columns": [],
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {},
@@ -5010,7 +5010,7 @@
           "columns": [],
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {},
@@ -5137,7 +5137,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "fieldConfig": {
@@ -5244,7 +5244,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "fieldConfig": {
@@ -5349,7 +5349,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {},
@@ -5452,7 +5452,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {},
@@ -5566,7 +5566,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 1,
           "fieldConfig": {
@@ -5673,7 +5673,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 0,
           "fieldConfig": {
@@ -5779,7 +5779,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 0,
           "fieldConfig": {
@@ -5885,7 +5885,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "decimals": 0,
           "fieldConfig": {
@@ -5997,11 +5997,26 @@
   "templating": {
     "list": [
       {
+        "current": { "selected": false, "text": "EKS Prometheus", "value": "EKS Prometheus" },
+        "description": "Choose a Prometheus Data Source",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Prometheus DS",
+        "multi": false,
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
         "allValue": null,
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "${DS_PROMETHEUS}"
         },
         "hide": 2,
         "includeAll": false,
@@ -6024,7 +6039,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "${DS_PROMETHEUS}"
         },
         "hide": 2,
         "includeAll": false,
@@ -6047,7 +6062,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "",
         "hide": 0,
