@@ -7,7 +7,6 @@ spec:
   repo: https://github.com/rusXL/project-x.git
   branch: main
   paths:
-    - kubernetes/eks/storage
     # - kubernetes/eks/mysql
     - kubernetes/eks/tidb-cluster
     - kubernetes/eks/api

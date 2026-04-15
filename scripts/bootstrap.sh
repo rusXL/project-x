@@ -25,6 +25,9 @@ cd ../..
 aws eks update-kubeconfig --name cluster-a --region us-east-1
 gcloud container clusters get-credentials cluster-g --zone us-east4-b --project cloud-computing-476715
 
+# gp3 storageclass (must exist before TiDB PVCs are created)
+kubectl apply -f kubernetes/eks/storage/gp3.yaml --context "$EKS_CTX"
+
 # tidb crds + operator
 kubectl apply -f https://github.com/pingcap/tidb-operator/releases/download/v2.0.0/tidb-operator.crds.yaml \
   --server-side --context "$EKS_CTX"
