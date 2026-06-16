@@ -11,10 +11,10 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - "frontend.34.21.100.141.nip.io"
+        - "frontend.34.150.176.95.nip.io"
       secretName: frontend-tls-secret
   rules:
-    - host: "frontend.34.21.100.141.nip.io"
+    - host: "frontend.34.150.176.95.nip.io"
       http:
         paths:
         - path: /
